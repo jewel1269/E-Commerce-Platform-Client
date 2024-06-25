@@ -3,7 +3,10 @@ import axios from 'axios';
 import { FaGoogle, FaTwitter } from 'react-icons/fa';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { GoogleAuthProvider } from 'firebase/auth';
 
+
+const provider = new GoogleAuthProvider()
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -29,6 +32,14 @@ const Login = () => {
         //     console.error('There was a problem with the axios operation:', error);
         // }
     };
+
+    const handleGoogleLogin = ()=>{
+        googleLogin(provider)
+        .then(res=>{
+            console.log(res.user);
+            navigate('/')
+        })
+    }
 
     return (
         <div className="w-full max-w-sm p-6 m-auto mx-auto lg:mt-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -86,7 +97,7 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col items-center mt-6 -mx-2">
-                <button type="button" className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">
+                <button onClick={handleGoogleLogin} type="button" className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">
                     <FaGoogle className="w-4 h-4 mx-2" />
                     <span className="hidden mx-2 sm:inline">Sign in with Google</span>
                 </button>

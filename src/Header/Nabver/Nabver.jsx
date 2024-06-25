@@ -88,7 +88,7 @@ const Nabvar = () => {
               <span className='font-semibold text-black'> Other</span>
             </a>
           </div>
-          <div className="flex text-xl space-x-4">
+          <div className="flex items-center text-xl space-x-4">
             <a href="#" className="hover:text-green-700">🔍</a>
             <a href="#" className="hover:text-green-700">❤</a>
             <a href="#" className="hover:text-green-700 flex items-center">
@@ -99,9 +99,15 @@ const Nabvar = () => {
               user? <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img
+                  {
+                    user? <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user?.photoURL} />
+                    :
+                    <img
                     alt="Tailwind CSS Navbar component"
                     src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  }
                 </div>
               </div>
               <ul
