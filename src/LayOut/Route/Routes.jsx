@@ -7,6 +7,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import DashboardPart from "../../User/DashboardPart/DashboardPart";
 import OrderTable from "../../User/OrderTable/OrderTable";
 import Payment from "../../User/Payment/Payment";
+import AboutMe from "../../User/AboutMe/AboutMe";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ export const router = createBrowserRouter([
       {
         path: "payment",
         element: <Payment/>
-      }
+      },
+      {
+        path: "profile",
+        element: <AboutMe/>
+      },
 
     ]
   }
