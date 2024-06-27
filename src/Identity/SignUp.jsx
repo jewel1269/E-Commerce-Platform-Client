@@ -57,6 +57,8 @@ const SignUp = () => {
       address,
       image: imageUrl,
       gender,
+      role:'user',
+      date: new Date()
     };
 
     console.log(formData);

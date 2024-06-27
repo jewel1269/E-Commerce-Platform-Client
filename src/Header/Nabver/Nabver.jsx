@@ -1,12 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 import { GiBreakingChain, GiDrinkMe, GiFishCooked, GiFruitBowl, GiFruitTree, GiMeat, GiShoppingCart, GiShorts } from 'react-icons/gi';
 import { PiBowlFoodBold, PiBowlFoodLight } from 'react-icons/pi';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import axios from 'axios';
 
 
 const Nabvar = () => {
   const {user, logOut}= useContext(AuthContext)
+
+  const [about, setAbout]= useState()
+
+   
+  useEffect(() => {
+    if (user?.email) {
+      axios
+        .get(`http://localhost:5000/userInfo/${user?.email}`)
+        .then((res) => {
+          console.log(res.data);
+          setAbout(res.data);
+        })
+        .catch((err) => {
+          console.error("Error fetching user info:", err);
+        });
+    }
+  }, [user?.email]);
+
+    console.log(about);
 
   const handleLogOut = ()=>{
     logOut()
@@ -102,7 +122,7 @@ const Nabvar = () => {
                   {
                     user? <img
                     alt="Tailwind CSS Navbar component"
-                    src={user?.photoURL} />
+                    src={user?.photoURL || about?.image}  />
                     :
                     <img
                     alt="Tailwind CSS Navbar component"
@@ -113,11 +133,25 @@ const Nabvar = () => {
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                <li>
+                {
+                  about?.role === 'admin' && (
+                    <li>
+                  <a href='dashboard/adminPart' className="justify-between">
+                  Dashboard
+                  </a>
+                </li>
+                  )
+                }
+
+                {
+                  about?.role === 'user' && (
+                    <li>
                   <a href='dashboard/userPart' className="justify-between">
                   Dashboard
                   </a>
                 </li>
+                  )
+                }
     
                 <li><a onClick={handleLogOut}>Logout</a></li>
               </ul>

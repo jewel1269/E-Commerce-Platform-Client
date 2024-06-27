@@ -9,6 +9,12 @@ import OrderTable from "../../User/OrderTable/OrderTable";
 import Payment from "../../User/Payment/Payment";
 import AboutMe from "../../User/AboutMe/AboutMe";
 import Cart from "../../User/MyCart/Cart";
+import AdminDashboardPart from "../../Admin/AdminDashboardPart/AdminDashboardPart";
+import AllOrders from "../../Admin/AllOrders/AllOrders";
+import AllPayment from "../../Admin/AllPayment/AllPayment";
+import BigSlae from "../../Admin/BigSale/BigSlae";
+import NotMiss from "../../Admin/NotMiss/NotMiss";
+import AddProductForm from "../../Admin/AddProductForm/AddProductForm";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +40,8 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
+
+      //user part
       {
         path: 'userPart',
         element: <DashboardPart/>
@@ -53,6 +61,32 @@ export const router = createBrowserRouter([
       {
         path: "myCart",
         element: <Cart/>
+      },
+
+      //Admin Part
+      {
+        path: 'adminPart',
+        element: <AdminDashboardPart/>
+      },
+      {
+        path: 'AllOrders',
+        element: <AllOrders/>
+      },
+      {
+        path: 'AllPayment',
+        element: <AllPayment/>
+      },
+      {
+        path: 'BigSlae',
+        element: <BigSlae/>
+      },
+      {
+        path: 'NotMiss',
+        element: <NotMiss/>
+      },
+      {
+        path: 'AddProductForm',
+        element: <AddProductForm/>
       },
 
     ]
