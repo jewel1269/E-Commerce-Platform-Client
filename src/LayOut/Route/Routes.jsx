@@ -8,6 +8,7 @@ import DashboardPart from "../../User/DashboardPart/DashboardPart";
 import OrderTable from "../../User/OrderTable/OrderTable";
 import Payment from "../../User/Payment/Payment";
 import AboutMe from "../../User/AboutMe/AboutMe";
+import Cart from "../../User/MyCart/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <AboutMe/>
+      },
+      {
+        path: "myCart",
+        element: <Cart/>
       },
 
     ]

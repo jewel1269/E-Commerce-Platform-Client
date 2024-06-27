@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductCard = ({ title, description, buttonLabel, imageUrl, widthClass }) => {
   return (
-    <div className={`bg-white rounded-2xl shadow-xl p-6 flex items-center ${widthClass}`}>
+    <div className={`bg-white rounded-2xl shadow-xl p-6 lg:flex items-center ${widthClass}`}>
       <div className="flex-1">
         <h3 className="text-3xl font-bold text-green-600 mb-2">{title}</h3>
         <p className="text-gray-700 mb-4">{description}</p>
@@ -10,7 +10,7 @@ const ProductCard = ({ title, description, buttonLabel, imageUrl, widthClass }) 
           {buttonLabel}
         </button>
       </div>
-      <div className="w-1/3 ml-4">
+      <div className="lg:w-1/3 ml-4">
         <img src={imageUrl} alt={title} className="w-full h-auto lg:w-96 lg:h-80 object-contain rounded-lg" />
       </div>
     </div>
@@ -20,7 +20,7 @@ const ProductCard = ({ title, description, buttonLabel, imageUrl, widthClass }) 
 const ProductSection = () => {
   return (
     <div className="bg-green-50 py-12">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className=" lg:ml-24 lg:mr-24 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <ProductCard
           title="Tasty Honey From Farm Sellers"
           description="100% natural honey and bee products expertly crafted to nourish your skin and boost your health."
