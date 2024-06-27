@@ -1,17 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import axios from 'axios';
 
 const AboutMe = () => {
     const {user}= useContext(AuthContext)
+    const [about, setAbout]= useState()
+
+   
+  useEffect(() => {
+    if (user?.email) {
+      axios
+        .get(`http://localhost:5000/userInfo/${user?.email}`)
+        .then((res) => {
+          console.log(res.data);
+          setAbout(res.data);
+        })
+        .catch((err) => {
+          console.error("Error fetching user info:", err);
+        });
+    }
+  }, [user?.email]);
+
+    console.log(about);
   return (
-    <div className="flex flex-col items-center p-8 bg-white text-gray-800">
+    <div className="w-full">
+      <div className="flex flex-col  items-center p-8 bg-white text-gray-800">
       <div className='flex items-start justify-between w-full max-w-4xl'>
         <div className="w-auto h-auto lg:h-72 lg:w-72 bg-gray-300 rounded-xl flex items-center justify-center">
-          <img src={user?.photoURL} alt="Avatar" className="w-full h-full rounded-xl" />
+          <img src={user?.photoURL || about?.image} alt="Avatar" className="w-full h-full rounded-xl" />
         </div>
 
         <div className="ml-8">
-          <h1 className="text-3xl font-bold mt-4">About Me</h1>
+          <h1 className="text-3xl font-bold mt-4">{about?.username}</h1>
           <h2 className="text-lg text-red-600 mt-2">A Lead UX & UI designer based in Canada</h2>
 
           <p className="text-start text-gray-700 mt-4 max-w-2xl">
@@ -33,15 +53,15 @@ const AboutMe = () => {
             </div>
             <div className="flex flex-col items-start">
               <p className="text-gray-600">Address</p>
-              <p className="font-bold">California, USA</p>
+              <p className="font-bold">{about?.address}</p>
             </div>
             <div className="flex flex-col items-start">
               <p className="text-gray-600">E-mail</p>
-              <p className="font-bold">info@domain.com</p>
+              <p className="font-bold">{about?.email}</p>
             </div>
             <div className="flex flex-col items-start">
               <p className="text-gray-600">Phone</p>
-              <p className="font-bold">820-885-3321</p>
+              <p className="font-bold">{about?.phoneNumber}</p>
             </div>
             <div className="flex flex-col items-start">
               <p className="text-gray-600">Skype</p>
@@ -73,6 +93,7 @@ const AboutMe = () => {
           <p className="text-gray-600">Telephonic Talk</p>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -22,34 +22,60 @@ const SignUp = () => {
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = {
-      username: e.target.username.value,
-      password: e.target.password.value,
-      email: e.target.email.value,
-      phoneNumber: e.target.phoneNumber.value,
-      address: e.target.address.value,
-      image,
-      gender: e.target.gender.value,
-    };
-    console.log(formData);
-    createUser(email, password).then((res) => {
-      console.log(res.user);
-      if(res.user){
-        alert('successfully regi...........')
-      }
-    });
-   
+  const uploadImageToImgbb = async (image) => {
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const imgbbEndpoint = `https://api.imgbb.com/1/upload?key=c08defba44209bd4d668f932824f5184`;
 
     try {
-        const response = await axios.post('YOUR_BACKEND_URL', formData);
-        console.log(response.data);
-        navigate("/");
+      const response = await axios.post(imgbbEndpoint, formData);
+      return response.data.data.url;
     } catch (error) {
-        console.error('There was a problem with the axios operation:', error);
+      console.error("There was a problem with the image upload:", error);
+      throw error;
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let imageUrl;
+
+    try {
+      imageUrl = await uploadImageToImgbb(image);
+    } catch (error) {
+      alert("Image upload failed. Please try again.");
+      return;
     }
 
+    const formData = {
+      username,
+      password,
+      email,
+      phoneNumber,
+      address,
+      image: imageUrl,
+      gender,
+    };
+
+    console.log(formData);
+
+    try {
+      await createUser(email, password);
+      alert("Successfully registered");
+
+      const response = await axios.post("http://localhost:5000/users", formData);
+      console.log(response.data);
+
+      if (response.data) {
+        alert("Data sent to MongoDB");
+      }
+
+      navigate("/");
+    } catch (error) {
+      console.error("There was a problem with the registration:", error);
+    }
   };
 
   return (
