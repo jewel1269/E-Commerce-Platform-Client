@@ -11,6 +11,26 @@ const Nabvar = () => {
 
   const [about, setAbout]= useState()
 
+  const [products, setProducts] = useState([]);
+  
+  useEffect(() => {
+    const fetchCartProducts = async () => {
+      if (user?.email) {
+        try {
+          const res = await axios.get(`http://localhost:5000/myCart/${user.email}`);
+          // console.log(res.data);
+          setProducts(res.data);
+        } catch (err) {
+          console.error("Error fetching user cart:", err);
+        }
+      }
+    };
+
+    fetchCartProducts();
+  }, [user?.email]);
+ 
+  console.log(products);
+
    
   useEffect(() => {
     if (user?.email) {
@@ -38,7 +58,7 @@ const Nabvar = () => {
   return (
     <div>
       {/* Top Bar */}
-      <div className="bg-green-900 text-white text-sm py-2">
+      <div className="bg-green-900  text-white text-sm py-2">
         <div className="  flex justify-between items-center px-4">
           <div className='text-md'>
             Delivery on Next Day from 10:00 AM to 08:00 PM
@@ -61,7 +81,7 @@ const Nabvar = () => {
         </div>
       </div>
       {/* Main Navbar */}
-      <div className="bg-white text-green-900 border-b">
+      <div className="bg-white  text-green-900 border-b">
       <div className="  flex justify-between items-center py-4 px-4">
           <a href="/">
           <div className="flex items-center space-x-2">
@@ -113,7 +133,7 @@ const Nabvar = () => {
             <a href="#" className="hover:text-green-700">❤</a>
             <a href="#" className="hover:text-green-700 flex items-center">
               🛒
-              <span className="ml-1 bg-red-500 text-white rounded-full px-2 py-1 text-xs">1</span>
+              <span className="ml-1 bg-red-500 text-white rounded-full px-2 py-1 text-xs">{products.length}</span>
             </a>
             {
               user? <div className="dropdown dropdown-end">

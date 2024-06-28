@@ -1,45 +1,43 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
-const orders = [
-  { id: '#78522135', product: 'Smart watch', address: '351 Shearwood Forest Drive', date: '2021-03-20', price: '$376.00', status: 'Complete' },
-  { id: '#78522135', product: 'Headphones', address: '6391 Elgin St. Celina', date: '2021-03-21', price: '$276.00', status: 'Pending' },
-  { id: '#78522135', product: 'Iphone Pro', address: '8502 Preston Rd. Inglewood', date: '2021-04-01', price: '$300.00', status: 'Canceled' },
-  // Add more orders here
-  { id: '#78522135', product: 'Smart watch', address: '351 Shearwood Forest Drive', date: '2021-03-20', price: '$376.00', status: 'Complete' },
-  { id: '#78522135', product: 'Headphones', address: '6391 Elgin St. Celina', date: '2021-03-21', price: '$276.00', status: 'Pending' },
-  { id: '#78522135', product: 'Iphone Pro', address: '8502 Preston Rd. Inglewood', date: '2021-04-01', price: '$300.00', status: 'Canceled' },
-  // Add more orders here
-  { id: '#78522135', product: 'Smart watch', address: '351 Shearwood Forest Drive', date: '2021-03-20', price: '$376.00', status: 'Complete' },
-  { id: '#78522135', product: 'Headphones', address: '6391 Elgin St. Celina', date: '2021-03-21', price: '$276.00', status: 'Pending' },
-  { id: '#78522135', product: 'Iphone Pro', address: '8502 Preston Rd. Inglewood', date: '2021-04-01', price: '$300.00', status: 'Canceled' },
-  // Add more orders here
-  { id: '#78522135', product: 'Smart watch', address: '351 Shearwood Forest Drive', date: '2021-03-20', price: '$376.00', status: 'Complete' },
-  { id: '#78522135', product: 'Headphones', address: '6391 Elgin St. Celina', date: '2021-03-21', price: '$276.00', status: 'Pending' },
-  { id: '#78522135', product: 'Iphone Pro', address: '8502 Preston Rd. Inglewood', date: '2021-04-01', price: '$300.00', status: 'Canceled' },
-  // Add more orders here
-  { id: '#78522135', product: 'Smart watch', address: '351 Shearwood Forest Drive', date: '2021-03-20', price: '$376.00', status: 'Complete' },
-  { id: '#78522135', product: 'Headphones', address: '6391 Elgin St. Celina', date: '2021-03-21', price: '$276.00', status: 'Pending' },
-  { id: '#78522135', product: 'Iphone Pro', address: '8502 Preston Rd. Inglewood', date: '2021-04-01', price: '$300.00', status: 'Canceled' },
-  // Add more orders here
-  { id: '#78522135', product: 'Smart watch', address: '351 Shearwood Forest Drive', date: '2021-03-20', price: '$376.00', status: 'Complete' },
-  { id: '#78522135', product: 'Headphones', address: '6391 Elgin St. Celina', date: '2021-03-21', price: '$276.00', status: 'Pending' },
-  { id: '#78522135', product: 'Iphone Pro', address: '8502 Preston Rd. Inglewood', date: '2021-04-01', price: '$300.00', status: 'Canceled' },
-  // Add more orders here
-  { id: '#78522135', product: 'Smart watch', address: '351 Shearwood Forest Drive', date: '2021-03-20', price: '$376.00', status: 'Complete' },
-  { id: '#78522135', product: 'Headphones', address: '6391 Elgin St. Celina', date: '2021-03-21', price: '$276.00', status: 'Pending' },
-  { id: '#78522135', product: 'Iphone Pro', address: '8502 Preston Rd. Inglewood', date: '2021-04-01', price: '$300.00', status: 'Canceled' },
-  // Add more orders here
-];
+
 
 const OrderTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [startDate, setStartDate] = useState(new Date('2021-03-01'));
   const [endDate, setEndDate] = useState(new Date('2021-04-30'));
   const [selectedTab, setSelectedTab] = useState(0);
+  const {user}= useContext(AuthContext)
+
+  const [orders, setOrders] = useState([]);
+  
+  useEffect(() => {
+    const fetchCartProducts = async () => {
+      if (user?.email) {
+        try {
+          const res = await axios.get(`http://localhost:5000/order/${user.email}`);
+          // console.log(res.data);
+          setOrders(res.data);
+        } catch (err) {
+          console.error("Error fetching user cart:", err);
+        }
+      }
+    };
+
+    fetchCartProducts();
+  }, [user?.email]);
+ console.log(orders);
+
+
+
+
+
 
   const itemsPerPage = 13;
 
@@ -106,7 +104,7 @@ const OrderTable = () => {
                       <th className="py-2 px-3">#</th>
                       <th className="py-2 px-3">Order ID</th>
                       <th className="py-2 px-3">Product Name</th>
-                      <th className="py-2 px-3">Address</th>
+                      
                       <th className="py-2 px-3">Date</th>
                       <th className="py-2 px-3">Price</th>
                       <th className="py-2 px-3">Status</th>
@@ -117,11 +115,11 @@ const OrderTable = () => {
                     {displayedOrders.map((order, index) => (
                       <tr key={index} className="border-t">
                         <td className="py-2 px-4">{index + 1 + (currentPage - 1) * itemsPerPage}</td>
-                        <td className="py-2 px-4">{order.id}</td>
-                        <td className="py-2 px-4">{order.product}</td>
-                        <td className="py-2 px-4">{order.address}</td>
-                        <td className="py-2 px-4">{order.date}</td>
-                        <td className="py-2 px-4">{order.price}</td>
+                        <td className="py-2 px-4">{order._id}</td>
+                        <td className="py-2 px-4">{order.orderProduct.menuCard?.title}</td>
+                        
+                        <td className="py-2 px-4">{order.Date}</td>
+                        <td className="py-2 px-4">{order.orderProduct.menuCard?.priceRange}</td>
                         <td className="py-2 px-4">
                           <span className={`px-2 py-1 rounded-full text-xs ${order.status === 'Complete' ? 'bg-green-100 text-green-700' : order.status === 'Pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}`}>
                             {order.status}

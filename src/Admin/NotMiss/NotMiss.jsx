@@ -39,7 +39,6 @@ const NotMiss = () => {
             <th className="py-2 px-4 border">Label</th>
             <th className="py-2 px-4 border">Category</th>
             <th className="py-2 px-4 border">Discount</th>
-            <th className="py-2 px-4 border">Confirm Order</th>
             <th className="py-2 px-4 border">Actions</th>
           </tr>
         </thead>
@@ -61,23 +60,7 @@ const NotMiss = () => {
               <td className="py-2 px-4 border">
                 {product?.discount}
               </td>
-              <td className="py-2 px-4 border">
-                <select
-                  value={status}
-                  onChange={handleChange}
-                  className={`bg-${
-                    status === "Accepted"
-                      ? "green"
-                      : status === "Rejected"
-                      ? "red"
-                      : "yellow"
-                  }-500 text-white px-4 btn-sm rounded-md`}
-                >
-                  <option value="Pending">Pending</option>
-                  <option value="Accepted">Accepted</option>
-                  <option value="Rejected">Rejected</option>
-                </select>
-              </td>
+              
               <td className="py-2 px-4 flex gap-3  border">
                 <button className="bg-orange-500 text-white px-2  btn-sm rounded-md">
                   <MdDelete />

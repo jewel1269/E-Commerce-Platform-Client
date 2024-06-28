@@ -75,11 +75,11 @@ const AllPayment = () => {
         <div className="mb-4">
           <h1 className="text-2xl font-semibold">Order <span className="text-gray-600">{filteredOrders.length} Orders found</span></h1>
           <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
-            <TabList className="flex space-x-4 mt-2 w-full">
-              <Tab className="text-blue-500">All Payment</Tab>
-              <Tab className="text-gray-500">Completed</Tab>
-              <Tab className="text-gray-500">Complete</Tab>
-              <Tab className="text-gray-500">Complete</Tab>
+            <TabList className="flex space-x-4 font-bold mt-2 w-full">
+              <Tab className="text-red-500">All Payment</Tab>
+              <Tab className="text-red-500">Completed</Tab>
+              <Tab className="text-red-500">Pending</Tab>
+              <Tab className="text-red-500">Rejected</Tab>
             </TabList>
             {[ 'All', 'Complete', 'Complete', 'Complete'].map((status, index) => (
               <TabPanel key={index}>

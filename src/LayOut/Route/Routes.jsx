@@ -15,6 +15,7 @@ import AllPayment from "../../Admin/AllPayment/AllPayment";
 import BigSlae from "../../Admin/BigSale/BigSlae";
 import NotMiss from "../../Admin/NotMiss/NotMiss";
 import AddProductForm from "../../Admin/AddProductForm/AddProductForm";
+import AllUser from "../../Admin/AllUser/AllUser";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
       {
         path: 'AddProductForm',
         element: <AddProductForm/>
+      },
+      {
+        path: 'AllUser',
+        element: <AllUser/>
       },
 
     ]
