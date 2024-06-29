@@ -1,29 +1,41 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-
-
-
-const ProductCard = ({product}) => {
-  
+const ProductCard = ({ product }) => {
   return (
-    <div className="bg-white p-4 rounded shadow text-center">
-      {product.isNew && <span className="bg-green-600 text-start text-white py-1 px-2 lg:mr-80 rounded-2xl  top-2 left-2">NEW</span>}
+    <div className="bg-white  p-4 rounded shadow text-center">
+      {product.isNew && (
+        <span className="bg-green-600 text-start text-white py-1 px-2 lg:mr-80 rounded-2xl  top-2 left-2">
+          NEW
+        </span>
+      )}
       {product.discount && (
         <span className="bg-red-600 text-white text-start py-1 px-2 rounded-full lg:mr-80  top-2 left-2">
           -{product.discount}%
         </span>
       )}
-      <img src={product.imgSrc} alt={product.name} className="mx-auto h-64 mb-4" />
-      <div className="font-semibold">{product.name}</div>
+      <img
+        src={product.imgSrc}
+        alt={product.name}
+        className="mx-auto border border-gray-100 p-2 rounded-lg h-64 mb-4"
+      />
+      <p className="divider"></p>
+      <div className="font-semibold text-xl">{product.name}</div>
       <p className="text-gray-500 text-start text-sm">{product.description}</p>
-      <div className="text-gray-800 mt-3 font-bold text-xs mb-2">{product.category}</div>
+      <div className="text-gray-800 mt-3 font-bold text-xs mb-2">
+        {product.category}
+      </div>
+      <p className="divider"></p>
       {product.oldPrice && (
-        <div className="text-gray-400 line-through text-sm">{product.oldPrice}</div>
+        <div className="text-gray-400 line-through text-sm">
+          {product.oldPrice}
+        </div>
       )}
       <div className="flex justify-around">
-      <div className="text-green-600 font-bold text-lg">{product.price ? product.price : product.priceRange}</div>
-      <button className="btn rounded-full btn-xs">Add to cart</button>
+        <div className="text-green-600 font-bold text-lg">
+          {product.price ? product.price : product.priceRange}
+        </div>
+        <button className="btn rounded-full btn-xs">Add to cart</button>
       </div>
       {product.rating && (
         <div className="flex justify-center mt-2">
@@ -50,7 +62,11 @@ const ProductCard = ({product}) => {
           <div className="h-2 w-full bg-gray-200 rounded mt-1">
             <div
               className="h-2 bg-green-600 rounded"
-              style={{ width: `${(product.sold / (product.sold + product.available)) * 100}%` }}
+              style={{
+                width: `${
+                  (product.sold / (product.sold + product.available)) * 100
+                }%`,
+              }}
             ></div>
           </div>
         </div>
@@ -80,8 +96,8 @@ const Products = () => {
 
   return (
     <div className="bg-green-100 p-6">
-      <div className="text-2xl font-semibold mb-6">Bestsellers in December</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="text-3xl font-semibold mb-6">Bestsellers in May:</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 p-6 lg:grid-cols-5 gap-8">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

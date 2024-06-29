@@ -10,17 +10,17 @@ const DiccountPart = () => {
         <span className="ml-2">Use this discount code on Checkout page.</span>
       </div>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 mt-6">
-        <div className="bg-white flex items-center justify-center p-4 rounded shadow text-center">
+        <div className="bg-white flex from-rose-200 via-fuchsia-300 to-indigo-200 bg-gradient-to-r items-center justify-center p-4 rounded shadow text-center">
           <div className="font-semibold text-2xl">Organic <span className="text-green-600">Olive Oil</span> <br /> from  France Fields</div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9CRK9eoQn4FGt4nDfzgMvsmur7ca-Hiwy4BuEuFgD2-N9RFSCsWqRyZxA1jiyZTi8leM&usqp=CAU" alt="Olive Oil" className="mx-auto mb-4" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9CRK9eoQn4FGt4nDfzgMvsmur7ca-Hiwy4BuEuFgD2-N9RFSCsWqRyZxA1jiyZTi8leM&usqp=CAU" alt="Olive Oil" className="mx-auto rounded-full mb-4" />
         </div>
-        <div className="bg-white flex  items-center justify-center  p-4 rounded shadow text-center">
+        <div className="bg-white flex  items-center justify-center  from-rose-200 via-fuchsia-300 to-indigo-200 bg-gradient-to-r p-4 rounded shadow text-center">
           <div className="font-semibold text-2xl">Sweet <span className="text-green-600">Candy</span> <br /> from South Korea</div>
-          <img src="https://s7.orientaltrading.com/is/image/OrientalTrading/14090827?$PDP_VIEWER_IMAGE$" alt="Candy" className="mx-auto h-56 mb-4" />
+          <img src="https://s7.orientaltrading.com/is/image/OrientalTrading/14090827?$PDP_VIEWER_IMAGE$" alt="Candy" className="mx-auto rounded-full h-56 mb-4" />
         </div>
-        <div className="bg-white p-4 flex items-center justify-center rounded shadow text-center">
+        <div className="bg-white p-4 flex items-center justify-center  from-rose-200 via-fuchsia-300 to-indigo-200 bg-gradient-to-r rounded shadow text-center">
           <div className="font-semibold text-2xl">Tasty <span className="text-green-600">Chocolate</span> <br /> from Switzerland</div>
-          <img src="https://www.spruengli.ch/images/shop/selection-de-pralines-truffes.jpg" alt="Chocolate" className="mx-auto h-56 mb-4" />
+          <img src="https://www.spruengli.ch/images/shop/selection-de-pralines-truffes.jpg" alt="Chocolate" className="mx-auto rounded-full h-56 mb-4" />
         </div>
       </div>
     </div>

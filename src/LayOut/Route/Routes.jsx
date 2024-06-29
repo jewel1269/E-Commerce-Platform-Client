@@ -16,6 +16,9 @@ import BigSlae from "../../Admin/BigSale/BigSlae";
 import NotMiss from "../../Admin/NotMiss/NotMiss";
 import AddProductForm from "../../Admin/AddProductForm/AddProductForm";
 import AllUser from "../../Admin/AllUser/AllUser";
+import SectionOne from "../../MainPart/SectionOne/SectionOne";
+import Details from ".././../MainPart/SectionOne/Details";
+
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: "/SignUp",
         element: <SignUp />
+      },
+      {
+        path: "/details/:id",
+        element: <Details />
       },
     ]
   },

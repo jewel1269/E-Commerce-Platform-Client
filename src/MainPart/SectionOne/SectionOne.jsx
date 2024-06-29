@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { FaRegEye } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -21,7 +23,7 @@ const ProductCard = ({menus}) => {
       });
       console.log('Added to cart:', response.data);
     
-        toast.success("Products Add Successfully")
+        alert("Products Add Successfully")
       
       
     } catch (error) {
@@ -32,9 +34,9 @@ const ProductCard = ({menus}) => {
   };
 
   return (
-    <div className='grid lg:grid-cols-3 grid-cols-1 gap-5 p-5'>
+    <div className='grid lg:grid-cols-3 grid-cols-1 gap-8 p-5'>
     {menus.map((menu) => (
-      <div key={menu._id} className="bg-white rounded-lg shadow-md p-4">
+      <div key={menu._id} className="bg-white rounded-lg lg:w-96 w-full hover:bg-slate-200 hover:cursor-zoom-in hover:shadow-2xl hover:border hover:border-gray-300 shadow-md p-4">
         <div className="flex justify-between items-center">
           {menu.isNew && (
             <span className="bg-green-100 text-green-600 rounded-full px-2 py-1 text-xs font-bold">
@@ -52,7 +54,7 @@ const ProductCard = ({menus}) => {
           <img
             src={menu.imageUrl}
             alt={menu.title}
-            className="w-full h-40 rounded-xl shadow-lg mt-4"
+            className="lg:w-48 w-full h-40 rounded-xl shadow-lg mt-4"
           />
           <div className="flex justify-between items-center my-2">
             <div className="text-xs font-bold">Sold: {menu.sold}</div>
@@ -74,19 +76,36 @@ const ProductCard = ({menus}) => {
         <div className="flex items-center justify-between">
           <div className="text-lg font-bold text-green-600">{menu.priceRange}</div>
           {menu.outOfStock ? (
-            <span className="text-xs font-bold text-red-600">OUT OF STOCK</span>
+            <div className='flex items-center justify-center gap-3'>
+              <span className="text-xs font-bold text-red-600">OUT OF STOCK</span>
+              <NavLink to={`/details/${menu._id}`}>
+            <button  className='rounded-full p-2 border border-gray-300 hover:bg-orange-500'>
+            <FaRegEye />
+            </button>
+            </NavLink>
+
+            </div>
           ) : (
-            <button
+            <div className="flex items-center justify-center gap-3">
+              <button
               className="bg-green-600 hover:bg-orange-500 text-white rounded-full px-4 py-2 text-xs"
               onClick={() => addToCartHandler(menu)} 
             >
               Add to Cart
             </button>
+            <NavLink to={`/details/${menu._id}`}>
+            <button  className='rounded-full p-2 border border-gray-300 hover:bg-orange-500'>
+            <FaRegEye />
+            </button>
+            </NavLink>
+            </div>
           )}
         </div>
       </div>
     ))}
+ 
   </div>
+
   );
 };
 const SectionOne = () => {
@@ -146,11 +165,11 @@ const SectionOne = () => {
     }, [days, hours, minutes, seconds]);
 
   return (
-    <div className="bg-green-50 py-12">
-      <div className="lg:flex lg:gap-10 lg:ml-5 lg:mr-5 mx-auto">
+    <div className="bg-green-50  py-12">
+      <div className="lg:flex lg:gap-10 w-full lg:ml-5 lg:mr-5 mx-auto">
     <div>
     <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Big Sales of Month</h2>
-        <div className="flex justify-center items-center ">
+        <div className="flex justify-center lg:ml-16 items-center ">
           <div className="bg-white p-4 rounded-lg shadow-md text-center">
             <h3 className="text-lg font-bold text-gray-800">Ends in:</h3>
             <div className="flex gap-5">
@@ -184,8 +203,8 @@ const SectionOne = () => {
 
           </div>
         </div>
-        <div className=" items-center mb-6">
-          <div className="bg-white p-4 rounded-lg shadow-md text-center w-full">
+        <div className=" items-center lg:ml-16  mb-6">
+          <div className="bg-white p-4 rounded-lg shadow-md text-center w-96">
             <h3 className="text-lg font-bold text-gray-800">We Deliver on Next Day from</h3>
             <p className="text-green-600 text-xl font-bold">10:00 AM to 08:00 PM</p>
             <img className='lg:h-96 lg:w-[450px]' src="https://www.shutterstock.com/image-photo/smiling-asian-delivery-man-orange-260nw-1689889483.jpg" alt="" />
