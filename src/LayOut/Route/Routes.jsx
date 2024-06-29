@@ -18,6 +18,11 @@ import AddProductForm from "../../Admin/AddProductForm/AddProductForm";
 import AllUser from "../../Admin/AllUser/AllUser";
 import SectionOne from "../../MainPart/SectionOne/SectionOne";
 import Details from ".././../MainPart/SectionOne/Details";
+import VegitableShop from "../../Header/VagitableShop/VegitableShop";
+import FreshFruit from "../../Header/FreshFruit/FreshFruit";
+import Meat from "../../Header/Meat/Meat";
+import Seafood from "../../Header/Seafood/Seafood";
+import Drinks from "../../Header/Drinks/Drinks";
 
 
 export const router = createBrowserRouter([
@@ -41,6 +46,26 @@ export const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: <Details />
+      },
+      {
+        path: "vegitableShop",
+        element: <VegitableShop />
+      },
+      {
+        path: "freshFruit",
+        element: <FreshFruit />
+      },
+      {
+        path: "meat",
+        element: <Meat />
+      },
+      {
+        path: "seaFood",
+        element: <Seafood />
+      },
+      {
+        path: "drinks",
+        element: <Drinks />
       },
     ]
   },

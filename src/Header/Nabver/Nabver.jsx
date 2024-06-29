@@ -95,31 +95,28 @@ const Nabvar = () => {
             <div className="text-3xl font-bold">Daily</div>
           </div></a>
           <div className="flex text-xl space-x-8">
-            <a href="#" className="hover:text-green-700 flex items-center space-x-1">
+            <a href="/" className="hover:text-green-700 flex items-center space-x-1">
               <GiShorts className="w-8 h-8" />
               <span className='font-semibold text-black'>Shop</span>
             </a>
-            <a href="#" className="hover:text-green-700 flex items-center space-x-1">
+            <a href="vegitableShop" className="hover:text-green-700 flex items-center space-x-1">
               <GiFruitTree className="w-8 h-8" />
               <span className='font-semibold text-black'>Vegetables</span>
             </a>
-            <a href="#" className="hover:text-green-700 flex items-center space-x-1">
+            <a href="freshFruit" className="hover:text-green-700 flex items-center space-x-1">
               <GiFruitBowl className="w-8 h-8" />
               <span className='font-semibold text-black'>Fresh Fruit</span>
             </a>
-            <a href="#" className="hover:text-green-700 flex items-center space-x-1">
+            <a href="meat" className="hover:text-green-700 flex items-center space-x-1">
               <GiMeat className="w-8 h-8" />
               <span className='font-semibold text-black'>Meat</span>
             </a>
-            <a href="#" className="hover:text-green-700 flex items-center space-x-1">
+            <a href="seaFood" className="hover:text-green-700 flex items-center space-x-1">
               <GiFishCooked className="w-8 h-8" />
               <span className='font-semibold text-black'>Seafood</span>
             </a>
-            <a href="#" className="hover:text-green-700 flex items-center space-x-1">
-              <GiBreakingChain className="w-8 h-8" />
-              <span className='font-semibold text-black'>Baking</span>
-            </a>
-            <a href="#" className="hover:text-green-700 flex items-center space-x-1">
+            
+            <a href="drinks" className="hover:text-green-700 flex items-center space-x-1">
               <GiDrinkMe className="w-8 h-8" />
               <span className='font-semibold text-black'>Drinks</span>
             </a>

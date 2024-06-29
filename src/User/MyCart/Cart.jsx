@@ -85,16 +85,16 @@ const Cart = () => {
           {products && products.map((product, index) => (
             <tr key={index}>
               <td className="py-2 px-4 border">
-                <img src={product.menuCard?.imageUrl} alt={product.title} className="w-16 h-16 object-cover" />
+                <img src={product.menuCard?.imageUrl || product.menuCard?.imgSrc} alt={product.title} className="w-16 h-16 object-cover" />
               </td>
-              <td className="py-2 px-4 border text-red-600">{product.menuCard?.title}</td>
+              <td className="py-2 px-4 border text-red-600">{product.menuCard?.title || product.menuCard?.name}</td>
               <td className="py-2 px-4 border">{product.menuCard?.description}</td>
               
               <td className="py-2 px-4 border">
                 {product.oldPrice && (
                   <span className="line-through text-gray-500 mr-2">{product.menuCard?.priceRange}</span>
                 )}
-                <span>{product.menuCard?.priceRange || product.price}</span>
+                <span>{product.menuCard?.priceRange || product.menuCard?.price}</span>
               </td>
               <td className="py-2 px-4 border">
                 <button onClick={()=>handleOrder(product)} className="bg-red-500 text-white px-4 btn-sm rounded-md">Order</button>

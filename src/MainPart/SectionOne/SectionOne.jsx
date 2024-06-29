@@ -79,7 +79,7 @@ const ProductCard = ({menus}) => {
             <div className='flex items-center justify-center gap-3'>
               <span className="text-xs font-bold text-red-600">OUT OF STOCK</span>
               <NavLink to={`/details/${menu._id}`}>
-            <button  className='rounded-full p-2 border border-gray-300 hover:bg-orange-500'>
+            <button data-tip="Details"  className='tooltip rounded-full p-2 border border-gray-300 hover:bg-orange-500'>
             <FaRegEye />
             </button>
             </NavLink>
@@ -94,7 +94,7 @@ const ProductCard = ({menus}) => {
               Add to Cart
             </button>
             <NavLink to={`/details/${menu._id}`}>
-            <button  className='rounded-full p-2 border border-gray-300 hover:bg-orange-500'>
+            <button data-tip="Details" className='tooltip rounded-full p-2 border border-gray-300 hover:bg-orange-500'>
             <FaRegEye />
             </button>
             </NavLink>

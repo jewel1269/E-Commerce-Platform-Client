@@ -94,9 +94,12 @@ const Details = () => {
                   </select>
                 </div>
               </div>
-              <button className="bg-orange-500 btn-sm text-white w-full py-2 rounded-lg flex justify-center items-center">
-                Buy Now
-              </button>
+             {items?.outOfStock ?  <button className="bg-gray-500 cursor-not-allowed btn-sm text-white w-full py-2 rounded-lg flex justify-center items-center">
+               Out Of Stock
+              </button> :
+               <button className="bg-orange-500 btn-sm text-white w-full py-2 rounded-lg flex justify-center items-center">
+               Buy Now
+             </button>}
             </div>
           </div>
         </div>

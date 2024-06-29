@@ -1,9 +1,35 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
+  const {user}=useContext(AuthContext)
+  const email = user?.email
+  
+  
+  const addToCartHandler = async (menuCard) => {
+    console.log(menuCard);
+    try {
+      const response = await axios.post(`http://localhost:5000/addToCart`, {
+        email,
+        menuCard
+      });
+      console.log('Added to cart:', response.data);
+    
+        alert("Products Add Successfully")
+      
+      
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      toast.error("Products Not added")
+     
+    }
+  };
+
+
   return (
-    <div className="bg-white  p-4 rounded shadow text-center">
+    <div className="bg-white hover:bg-gray-200 hover:cursor-zoom-in hover:border hover:border-gray-300 hover:shadow-xl  p-4 rounded shadow text-center">
       {product.isNew && (
         <span className="bg-green-600 text-start text-white py-1 px-2 lg:mr-80 rounded-2xl  top-2 left-2">
           NEW
@@ -35,7 +61,7 @@ const ProductCard = ({ product }) => {
         <div className="text-green-600 font-bold text-lg">
           {product.price ? product.price : product.priceRange}
         </div>
-        <button className="btn rounded-full btn-xs">Add to cart</button>
+        <button onClick={()=>addToCartHandler(product)} className="btn rounded-full  hover:cursor-zoom-in hover:bg-orange-400 btn-xs">Add to cart</button>
       </div>
       {product.rating && (
         <div className="flex justify-center mt-2">
