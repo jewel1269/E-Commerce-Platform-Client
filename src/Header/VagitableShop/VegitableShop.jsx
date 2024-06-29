@@ -141,10 +141,7 @@ const ProductList = () => {
           </div>
         </div>
       </div>
-      <MessengerCustomerChat
-    pageId="https://www.facebook.com/Iftekar13"
-   
-  />
+     
     </div>
    
   );

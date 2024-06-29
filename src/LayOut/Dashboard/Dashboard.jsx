@@ -6,6 +6,7 @@ import DashboardPart from '../../User/DashboardPart/DashboardPart';
 import Nabvar from '../../Header/Nabver/Nabver';
 import axios from 'axios';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import MessengerChat from '../../MassengerChat/MessengerChart';
 
 const Dashboard = () => {
 const {user} = useContext(AuthContext)
@@ -191,6 +192,7 @@ const {user} = useContext(AuthContext)
         <main className="flex-1 p-6">
           <Outlet />
           {/* <DashboardPart /> */}
+          <MessengerChat/>
         </main>
       </div>
     </div>
