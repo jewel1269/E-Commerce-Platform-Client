@@ -17,15 +17,7 @@ const data = [
   { order: "#030179", name: "Burke, Minnie", price: 12.94, email: "minnie.burke63@example.com", date: "12/12/2016", time: "09:48 PM" },
   { order: "#090543", name: "Carlson, Jimmy", price: 35.23, email: "jimmy.carlson85@example.com", date: "24/09/2016", time: "12:16 AM" },
   { order: "#100679", name: "Castillo, Ross", price: 98.53, email: "ross.castillo73@example.com", date: "22/10/2016", time: "09:48 PM" },
-  { order: "#070241", name: "Garcia, Calvin", price: 89.20, email: "calvin.garcia41@example.com", date: "11/03/2016", time: "12:16 AM" },
-  { order: "#080772", name: "Knight, Mario", price: 34.99, email: "mario.knight80@example.com", date: "19/02/2016", time: "09:48 PM" },
-  { order: "#030581", name: "Lewis, Marion", price: 65.11, email: "marion.lewis91@example.com", date: "01/11/2016", time: "12:16 AM" },
-  { order: "#120480", name: "Martin, Jessica", price: 104.53, email: "jessica.martin13@example.com", date: "14/10/2016", time: "09:48 PM" },
-  { order: "#040974", name: "Meyer, Derek", price: 51.16, email: "derek.meyer81@example.com", date: "05/04/2016", time: "12:16 AM" },
-  { order: "#030375", name: "Murphy, Ethan", price: 295.62, email: "ethan.murphy64@example.com", date: "10/04/2016", time: "12:16 AM" },
-  { order: "#070785", name: "Owens, Hailey", price: 30.90, email: "hailey.owens56@example.com", date: "03/06/2016", time: "12:16 AM" },
-  { order: "#050778", name: "Pierce, Jeremiah", price: 10.99, email: "jeremiah.pierce87@example.com", date: "17/07/2016", time: "12:16 AM" },
-  { order: "#110374", name: "Romero, Anthony", price: 21.95, email: "anthony.romero10@example.com", date: "14/02/2016", time: "12:16 AM" },
+  
 ];
 
 const ITEMS_PER_PAGE = 12;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Details = () => {
@@ -97,9 +97,12 @@ const Details = () => {
              {items?.outOfStock ?  <button className="bg-gray-500 cursor-not-allowed btn-sm text-white w-full py-2 rounded-lg flex justify-center items-center">
                Out Of Stock
               </button> :
-               <button className="bg-orange-500 btn-sm text-white w-full py-2 rounded-lg flex justify-center items-center">
+              <NavLink to={`/PaymentPage/${items?._id}`}>
+                 <button className="bg-green-500 btn-sm hover:bg-orange-500 text-white w-full py-2 rounded-lg flex justify-center items-center">
                Buy Now
-             </button>}
+             </button>
+              </NavLink>
+             }
             </div>
           </div>
         </div>

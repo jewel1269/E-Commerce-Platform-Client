@@ -23,6 +23,7 @@ import FreshFruit from "../../Header/FreshFruit/FreshFruit";
 import Meat from "../../Header/Meat/Meat";
 import Seafood from "../../Header/Seafood/Seafood";
 import Drinks from "../../Header/Drinks/Drinks";
+import PaymentPage from "../../PaymentPage/PaymentPage";
 
 
 export const router = createBrowserRouter([
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "drinks",
         element: <Drinks />
+      },
+      {
+        path: "/PaymentPage/:id",
+        element: <PaymentPage />
       },
     ]
   },

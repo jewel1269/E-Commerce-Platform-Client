@@ -1,7 +1,18 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { BsArrow90DegLeft } from 'react-icons/bs';
 
 const FreshFruit = () => {
+  const [freshFruit, setFreshFruit] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:5000/freshFruit").then((res) => {
+      console.log(res.data);
+      setFreshFruit(res.data);
+    });
+  }, []);
+  console.log(freshFruit);
+
+  
     return (
         <div>
         {/* Breadcrumb and Categories */}
@@ -10,33 +21,33 @@ const FreshFruit = () => {
   
           <div className="text-center">
             <h1 className="text-3xl font-semibold text-green-700 mb-4">𝙵𝚛𝚎𝚜𝚑 𝙵𝚛𝚞𝚒𝚝</h1>
-            <div className="flex flex-wrap justify-center items-center space-x-4">
-              <div className="p-4 rounded bg-gray-100">
-                <a href="#" className="flex items-center justify-center">
-                  <BsArrow90DegLeft />
-                </a>
-                <p className="text-green-500 mt-2">Fresh Fruit</p>
-              </div>
-              {[
-                { name: 'Leafy Green', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLb4-6UK-mbEX_1A-qgRuNBPydBBExvIBIDA&s' },
-                { name: 'Mushrooms', image: 'https://rrcultivation.com/cdn/shop/files/R_RCultivation-Shadows_21_900x.png?v=1694707764' },
-                { name: 'Root', image: 'https://img.freepik.com/premium-photo/ingredients-cooking-garlic-sauce-white-wooden-background_185193-76535.jpg?w=1380' },
-              ].map((category, index) => (
-                <div key={index} className="p-4">
-                  <a href="#" className="block">
-                    <img src={category.image} alt={category.name} className="w-16 h-16 object-cover mx-auto" />
-                  </a>
-                  <p className="mt-2 text-gray-700">{category.name}</p>
-                </div>
-              ))}
-            </div>
+            <div className="bg-green-200 w-full lg:flex justify-center items-center ">
+      <div className="w-full mx-auto p-10 lg:h-96 bg-green-100 rounded-lg shadow-lg lg:flex justify-around">
+        <div className="">
+          <img 
+            src="https://img.freepik.com/premium-photo/shopping-cart-full-fruits-vegetables_950347-6313.jpg?w=1380" 
+            alt="Shopping Cart with Organic Products" 
+            className="rounded-lg lg:h-64 w-auto"
+          />
+        </div>
+        <div className="lg:w-1/2 pl-8">
+          <h2 className="text-3xl font-bold mb-4">We Love Organic Products</h2>
+          <p className="text-gray-700 text-start
+          ">
+            Were you aware that non-organic items can contain substantial pesticide residues and artificial preservatives? 
+            That's why we emphasize sourcing organic items. They not only offer a more delightful taste but also contribute 
+            to maintaining healthier soils and promoting biodiversity.
+          </p>
+        </div>
+      </div>
+    </div>
           </div>
         </div>
   
         {/* Product List */}
         <div className="flex flex-col md:flex-row">
           {/* Sidebar */}
-          <div className="w-full md:w-1/4 p-4 bg-gray-100">
+          <div className="w-full md:w-1/4 p-4 bg-green-50">
             <div className="mb-4">
               <h2 className="text-lg font-semibold">Price</h2>
               <div className="flex items-center justify-between">
@@ -81,11 +92,11 @@ const FreshFruit = () => {
           </div>
   
           {/* Main content */}
-          <div className="w-full md:w-3/4 p-4">
+          <div className="w-full bg-green-50 md:w-3/4 p-4">
             <div className="flex justify-between mb-4">
               <span>Showing all 3 results</span>
               <div className="relative">
-                <select className="px-2 py-1 bg-gray-200 rounded">
+                <select className="px-2 py-1 bg-green-50 rounded">
                   <option>Default sorting</option>
                   {/* Add more sorting options as needed */}
                 </select>
@@ -94,48 +105,52 @@ const FreshFruit = () => {
   
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Product Card */}
-              {[
-                {
-                  name: 'Spring Onions 1 Bunch',
-                  description: 'Go for spring onions with firm, unblemished bulbs and bright green, perky leaves.',
-                  price: '$10.00',
-                  sold: 26,
-                  available: 21,
-                  image: 'path/to/onions.jpg', // Replace with actual image path
-                },
-                {
-                  name: 'Mint',
-                  description: 'The mint plant is a herbaceous perennial that is widely known.',
-                  price: '$13.00 - $22.00',
-                  sold: 37,
-                  available: 4,
-                  image: 'path/to/mint.jpg', // Replace with actual image path
-                },
-                {
-                  name: 'Basil',
-                  description: 'To keep basil fresh, trim the stems and place them in a glass or jar of water.',
-                  price: '$10.00 $8.00',
-                  sold: 37,
-                  available: 4,
-                  image: 'path/to/basil.jpg', // Replace with actual image path
-                },
-              ].map((product, index) => (
-                <div key={index} className="border p-4 rounded bg-white">
-                  <div className="relative">
-                    <img src={product.image} alt={product.name} className="w-full h-32 object-cover" />
-                    <span className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded">NEW</span>
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold">{product.name}</h3>
-                  <p className="text-sm">{product.description}</p>
-                  <div className="mt-2">
-                    <span className="block text-green-500 font-semibold">{product.price}</span>
-                    <div className="flex justify-between text-sm mt-1">
-                      <span>Sold: {product.sold}</span>
-                      <span>Available: {product.available}</span>
-                    </div>
-                  </div>
-                  <button className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded">Add to Cart</button>
+              {freshFruit.map((product, index) => (
+                <div key={index} className="border hover:bg-slate-200 hover:cursor-zoom-in hover:shadow-2xl hover:border hover:border-gray-300 lg:w-96 p-4 rounded bg-white">
+                <div className="relative">
+                  <img
+                    src={product?.imageUrl}
+                    alt={product.name}
+                    className="w-full h-56 rounded-lg object-cover"
+                  />
+                  <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+                    {product?.discount}
+                  </span>
                 </div>
+                <h3 className="mt-4 text-lg font-semibold">
+                  {product.title}
+                </h3>
+                <p className="text-sm">{product.description}</p>
+                <div className="mt-2">
+                  <div className="flex justify-between">
+                    <span className="block">
+                      <strong>Category:</strong> {product.category}
+                    </span>
+                    <span className="block">
+                      <strong>Price:</strong> {product.priceRange}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-sm mt-1">
+                    <span>Sold: {product.sold}</span>
+                    <span>Available: {product.available}</span>
+                  </div>
+                  <select className="mt-3 border border-gray-200" name="" id="">
+                  {
+                    product?.options.map(item=><option key={item._id} value={item}>{item}</option>)
+                  }
+                  </select>
+                  
+                </div>
+                {product?.outOfStock === true ? (
+                  <button className="mt-4 w-full px-4 py-2 bg-gray-500 cursor-not-allowed text-white rounded">
+                    Out Of Stock
+                  </button>
+                ) : (
+                  <button className="mt-4 w-full px-4 py-2 bg-green-500 hover:bg-orange-400 text-white rounded">
+                    Add to Cart
+                  </button>
+                )}
+              </div>
               ))}
             </div>
           </div>
