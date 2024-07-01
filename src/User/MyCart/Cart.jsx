@@ -134,7 +134,7 @@ const Cart = () => {
                 <span>{product.menuCard?.priceRange || product.menuCard?.price}</span>
               </td>
               <td className="py-2 px-4 border">
-                <button onClick={()=>handleOrder(product)} className="bg-red-500 text-white px-4 btn-sm rounded-md">Order</button>
+                <button onClick={()=>handleOrder(product)} className=" hover:bg-orange-400 hover:text-white text-black border border-gray-400 px-4 btn-sm rounded-md">Confirm Order</button>
               </td>
               <td className="py-2 px-4 flex bg-gray-100  gap-2  border">
                 <button onClick={()=>handleDelete(product._id)} className="bg-orange-500 text-white px-2  btn-sm rounded-md"><MdDelete /></button>

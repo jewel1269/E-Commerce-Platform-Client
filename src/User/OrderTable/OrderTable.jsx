@@ -105,6 +105,21 @@ const OrderTable = () => {
     });
 };
 
+
+const hanldeCreatePayment =()=>{
+axios.post('http://localhost:5000/create-payment', {
+  amount: 1000,
+  currency: 'USD'
+})
+.then(res=>{
+  console.log(res);
+  const redirectUrl = res.data.paymentUrl;
+  if(redirectUrl){
+    window.location.replace(redirectUrl)
+  }
+})
+}
+
   return (
     <div className="p-4">
       <div className="mb-4">
@@ -163,8 +178,8 @@ const OrderTable = () => {
                           </span>
                         </td>
                         <td className="py-2 px-4 border-b">
-                  <button className="bg-blue-500 text-white px-2 py-1 rounded mr-2">Payment</button>
-                  <button onClick={()=>handleDelete(order._id)} className="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                  <button onClick={hanldeCreatePayment} className="hover:bg-green-600 hover:text-black text-black border border-gray-400 px-2 py-1 rounded mr-2">Payment</button>
+                  <button onClick={()=>handleDelete(order._id)} className="hover:bg-red-600 hover:text-white px-2 text-black border border-gray-400px-2 py-1 rounded">Delete</button>
                 </td>
                       </tr>
                     ))}

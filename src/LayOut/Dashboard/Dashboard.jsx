@@ -11,6 +11,25 @@ import MessengerChat from '../../MassengerChat/MessengerChart';
 const Dashboard = () => {
 const {user} = useContext(AuthContext)
   const [about, setAbout]= useState()
+  const [products, setProducts] = useState([]);
+  
+  useEffect(() => {
+    const fetchCartProducts = async () => {
+      if (user?.email) {
+        try {
+          const res = await axios.get(`http://localhost:5000/myCart/${user.email}`);
+          // console.log(res.data);
+          setProducts(res.data);
+        } catch (err) {
+          console.error("Error fetching user cart:", err);
+        }
+      }
+    };
+
+    fetchCartProducts();
+  }, [user?.email]);
+ 
+  console.log(products);
 
    
   useEffect(() => {
@@ -152,7 +171,10 @@ const {user} = useContext(AuthContext)
                 to="myCart"
               >
                 <FaUser className="w-5 h-5" />
-                <span className="mx-4 font-medium">My Cart</span>
+                <span className="mx-4 font-medium">My Cart- <strong className='text-xl'>({products.length})</strong></span>
+               
+              
+            
               </Link>
 
               <Link
