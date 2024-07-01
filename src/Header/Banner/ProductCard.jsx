@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductCard = ({ title, description, buttonLabel, imageUrl, widthClass }) => {
   return (
-    <div className={`bg-white rounded-2xl shadow-xl p-6 lg:flex items-center ${widthClass}`}>
+    <div className={`bg-white hover:bg-green-100 hover:cursor-zoom-in  rounded-2xl shadow-xl p-6 lg:flex items-center ${widthClass}`}>
       <div className="flex-1">
         <h3 className="text-3xl font-bold text-green-600 mb-2">{title}</h3>
         <p className="text-gray-700 mb-4">{description}</p>

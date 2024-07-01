@@ -30,6 +30,7 @@
     "recharts": "^2.12.7",
     "rsuite": "^5.65.0",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.12.1",
     "swiper": "^11.1.4"
   },
   "devDependencies": {

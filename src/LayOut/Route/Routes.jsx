@@ -24,6 +24,7 @@ import Meat from "../../Header/Meat/Meat";
 import Seafood from "../../Header/Seafood/Seafood";
 import Drinks from "../../Header/Drinks/Drinks";
 import PaymentPage from "../../PaymentPage/PaymentPage";
+import FruitsDetails from "../../Header/FreshFruit/FruitsDetails";
 
 
 export const router = createBrowserRouter([
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: "/PaymentPage/:id",
         element: <PaymentPage />
+      },
+      {
+        path: "/FruitsDetails/:id",
+        element: <FruitsDetails />
       },
     ]
   },

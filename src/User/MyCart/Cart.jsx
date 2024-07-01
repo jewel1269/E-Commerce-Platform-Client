@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { MdDelete, MdSystemUpdateAlt } from 'react-icons/md';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 
@@ -67,6 +68,42 @@ const Cart = () => {
     })
   }
 
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `http://localhost:5000/cartDelete/${id}`;
+        axios.delete(url)
+          .then((response) => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+          })
+          .catch((error) => {
+            console.error("Error deleting item:", error);
+            Swal.fire({
+              title: "Error!",
+              text: "There was a problem deleting your file.",
+              icon: "error"
+            });
+          });
+      }
+    });
+};
+
   return (
     <div className="p-4">
       <table className="min-w-full bg-white border-collapse">
@@ -88,7 +125,7 @@ const Cart = () => {
                 <img src={product.menuCard?.imageUrl || product.menuCard?.imgSrc} alt={product.title} className="w-16 h-16 object-cover" />
               </td>
               <td className="py-2 px-4 border text-red-600">{product.menuCard?.title || product.menuCard?.name}</td>
-              <td className="py-2 px-4 border">{product.menuCard?.description}</td>
+              <td className="py-2 px-4 border">{product.menuCard?.description || product.menuCard?.shortDescription}</td>
               
               <td className="py-2 px-4 border">
                 {product.oldPrice && (
@@ -99,8 +136,8 @@ const Cart = () => {
               <td className="py-2 px-4 border">
                 <button onClick={()=>handleOrder(product)} className="bg-red-500 text-white px-4 btn-sm rounded-md">Order</button>
               </td>
-              <td className="py-2 px-4 flex  gap-2  border">
-                <button className="bg-orange-500 text-white px-2  btn-sm rounded-md"><MdDelete /></button>
+              <td className="py-2 px-4 flex bg-gray-100  gap-2  border">
+                <button onClick={()=>handleDelete(product._id)} className="bg-orange-500 text-white px-2  btn-sm rounded-md"><MdDelete /></button>
                 <button className="bg-green-500 text-white px-2 btn-sm rounded-md"><MdSystemUpdateAlt /></button>
               </td>
             </tr>

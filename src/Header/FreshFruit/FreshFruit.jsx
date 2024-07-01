@@ -1,6 +1,9 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BsArrow90DegLeft } from 'react-icons/bs';
+import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const FreshFruit = () => {
   const [freshFruit, setFreshFruit] = useState([]);
@@ -12,22 +15,45 @@ const FreshFruit = () => {
   }, []);
   console.log(freshFruit);
 
+  const {user}=useContext(AuthContext)
+  const email = user?.email
+  
+  
+  const addToCartHandler = async (menuCard) => {
+    console.log(menuCard);
+    try {
+      const response = await axios.post(`http://localhost:5000/addToCart`, {
+        email,
+        menuCard
+      });
+      console.log('Added to cart:', response.data);
+    
+        alert("Products Add Successfully")
+      
+      
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      toast.error("Products Not added")
+     
+    }
+  };
+
   
     return (
         <div>
         {/* Breadcrumb and Categories */}
-        <div className="p-4 bg-white">
+        <div className="lg:p-4 bg-white">
          
   
           <div className="text-center">
             <h1 className="text-3xl font-semibold text-green-700 mb-4">𝙵𝚛𝚎𝚜𝚑 𝙵𝚛𝚞𝚒𝚝</h1>
-            <div className="bg-green-200 w-full lg:flex justify-center items-center ">
-      <div className="w-full mx-auto p-10 lg:h-96 bg-green-100 rounded-lg shadow-lg lg:flex justify-around">
+            <div className="lg:bg-green-200 w-full lg:flex justify-center items-center ">
+      <div className="w-full lg:mx-auto lg:p-10 lg:h-96 lg:bg-green-100 rounded-lg shadow-lg lg:flex justify-around">
         <div className="">
           <img 
             src="https://img.freepik.com/premium-photo/shopping-cart-full-fruits-vegetables_950347-6313.jpg?w=1380" 
             alt="Shopping Cart with Organic Products" 
-            className="rounded-lg lg:h-64 w-auto"
+            className="rounded-lg lg:h-64 h-full lg:w-96 w-full "
           />
         </div>
         <div className="lg:w-1/2 pl-8">
@@ -108,11 +134,13 @@ const FreshFruit = () => {
               {freshFruit.map((product, index) => (
                 <div key={index} className="border hover:bg-slate-200 hover:cursor-zoom-in hover:shadow-2xl hover:border hover:border-gray-300 lg:w-96 p-4 rounded bg-white">
                 <div className="relative">
-                  <img
+                 <NavLink to={`/FruitsDetails/${product._id}`}>
+                 <img
                     src={product?.imageUrl}
                     alt={product.name}
                     className="w-full h-56 rounded-lg object-cover"
                   />
+                 </NavLink>
                   <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
                     {product?.discount}
                   </span>
@@ -120,7 +148,7 @@ const FreshFruit = () => {
                 <h3 className="mt-4 text-lg font-semibold">
                   {product.title}
                 </h3>
-                <p className="text-sm">{product.description}</p>
+                <p className="text-sm">{product.shortDescription}</p>
                 <div className="mt-2">
                   <div className="flex justify-between">
                     <span className="block">
@@ -146,7 +174,7 @@ const FreshFruit = () => {
                     Out Of Stock
                   </button>
                 ) : (
-                  <button className="mt-4 w-full px-4 py-2 bg-green-500 hover:bg-orange-400 text-white rounded">
+                  <button onClick={()=>addToCartHandler(product)} className="mt-4 w-full px-4 py-2 bg-green-500 hover:bg-orange-400 text-white rounded">
                     Add to Cart
                   </button>
                 )}
