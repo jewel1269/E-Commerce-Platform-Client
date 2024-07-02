@@ -71,7 +71,7 @@ const AllPayment = () => {
     currentPage * itemsPerPage
   );
     return (
-        <div className="p-4">
+        <div className="lg:p-4">
         <div className="mb-4">
           <h1 className="text-2xl font-semibold">Order <span className="text-gray-600">{filteredOrders.length} Orders found</span></h1>
           <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
@@ -99,7 +99,7 @@ const AllPayment = () => {
                     />
                   </div>
                 </div>
-                <div className="overflow-x-hidden">
+                <div className="overflow-x-auto">
                   <table className="min-w-full bg-white">
                     <thead className="bg-gray-100">
                       <tr>

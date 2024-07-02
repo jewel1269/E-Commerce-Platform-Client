@@ -105,7 +105,7 @@ const Cart = () => {
 };
 
   return (
-    <div className="p-4">
+    <div className="lg:p-4 overflow-x-auto">
       <table className="min-w-full bg-white border-collapse">
         <thead>
           <tr>
@@ -134,7 +134,7 @@ const Cart = () => {
                 <span>{product.menuCard?.priceRange || product.menuCard?.price}</span>
               </td>
               <td className="py-2 px-4 border">
-                <button onClick={()=>handleOrder(product)} className=" hover:bg-orange-400 lg:w-36 hover:text-white text-black border border-gray-400 px-4 btn-sm rounded-md">Confirm Order</button>
+                <button onClick={()=>handleOrder(product)} className=" hover:bg-orange-400 lg:w-36 hover:text-white text-black border h-12 lg:h-0 md:h-0 border-gray-400 px-4 btn-sm rounded-md">Confirm Order</button>
               </td>
               <td className="py-2 px-4 flex bg-gray-100  gap-2  border">
                 <button onClick={()=>handleDelete(product._id)} className="bg-orange-500 text-white px-2  btn-sm rounded-md"><MdDelete /></button>

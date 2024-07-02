@@ -20,7 +20,7 @@ const AllOrders = () => {
     setStatus(event.target.value);
   };
   return (
-    <div className="p-4">
+    <div className="lg:p-4 overflow-x-auto">
       <table className="min-w-full bg-white border-collapse">
         <thead>
           <tr>

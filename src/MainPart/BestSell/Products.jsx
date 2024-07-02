@@ -2,9 +2,10 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
+import loadingImg from "/Animation - 1719949818611.gif"
 
 const ProductCard = ({ product }) => {
-  const {user}=useContext(AuthContext)
+  const {user, loading}=useContext(AuthContext)
   const email = user?.email
   
   
@@ -26,10 +27,18 @@ const ProductCard = ({ product }) => {
      
     }
   };
+  if (loading) {
+    return (
+      <div className='flex lg:ml-96 items-center justify-center'>
+        <img className='lg:h-28 lg:w-40' src={loadingImg}></img>
+      </div>
+    )
+  }
+
 
 
   return (
-    <div className="bg-white hover:bg-gray-200 hover:cursor-zoom-in hover:border hover:border-gray-300 hover:shadow-xl  p-4 rounded shadow text-center">
+    <div className="bg-white hover:bg-gray-200 hover:cursor-zoom-in hover:border hover:border-gray-300 hover:shadow-xl  lg:p-4 rounded shadow text-center">
       {product.isNew && (
         <span className="bg-green-600 text-start text-white py-1 px-2 lg:mr-80 rounded-2xl  top-2 left-2">
           NEW
@@ -123,7 +132,7 @@ const Products = () => {
   return (
     <div className="bg-green-100 p-6">
       <div className="text-3xl font-semibold mb-6">Bestsellers in May:</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 p-6 lg:grid-cols-5 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:p-6 lg:grid-cols-5 gap-8">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

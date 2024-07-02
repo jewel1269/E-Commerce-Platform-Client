@@ -1,6 +1,8 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import loadingImg from "/Animation - 1719949818611.gif"
 
 const ProductCard = ({ title, description, price, oldPrice, image, discount, buttonText }) => {
   return (
@@ -36,6 +38,7 @@ const ProductCard = ({ title, description, price, oldPrice, image, discount, but
 
 const LastSwiper = () => {
   const [products, setProducts] = useState([]);
+  const {loading}=useContext(AuthContext)
 
   useEffect(() => {
     const fetchMenus = async () => {
@@ -51,6 +54,13 @@ const LastSwiper = () => {
     fetchMenus();
   }, []); // Empty dependency array ensures the effect runs only once on component mount
 
+  if (loading) {
+    return (
+      <div className='flex lg:ml-96 items-center justify-center'>
+        <img className='lg:h-28 lg:w-40' src={loadingImg}></img>
+      </div>
+    )
+  }
 
   return (
    <div className='p-5'>

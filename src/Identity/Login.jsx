@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { FaGoogle, FaTwitter } from 'react-icons/fa';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 
@@ -12,6 +12,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const { googleLogin,signIn,}= useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,7 +23,7 @@ const Login = () => {
         .then(res=>{
             console.log(res.user);
         })
-        navigate('/')
+        navigate(location.state)
 
 
         // try {
@@ -37,7 +38,7 @@ const Login = () => {
         googleLogin(provider)
         .then(res=>{
             console.log(res.user);
-            navigate('/')
+            navigate(location.state)
         })
     }
 

@@ -30,9 +30,9 @@ const barData = [
 
 const DashboardPart = () => {
   return (
-    <div className="p-6 w-full bg-gray-100 min-h-screen">
+    <div className="lg:p-6 w-full bg-gray-100 min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow-md">
+        <div className="bg-white lg:p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold">$995,600</h2>
           <p className="text-gray-600">GMV</p>
           <p className="text-green-500 mt-2">18% from prev. month</p>
@@ -160,7 +160,7 @@ const DashboardPart = () => {
                   { name: 'Returning', sessions: 3556 }
                 ]}
                 margin={{
-                  top: 5, right: 30, left: 20, bottom: 5,
+                  top: 5, right: 30, bottom: 5,
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />

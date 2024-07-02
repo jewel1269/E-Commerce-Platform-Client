@@ -26,6 +26,7 @@ import Drinks from "../../Header/Drinks/Drinks";
 import PaymentPage from "../../PaymentPage/PaymentPage";
 import FruitsDetails from "../../Header/FreshFruit/FruitsDetails";
 import SuccessPayment from "../../PaymentInformation/PaymentSuccess/SuccessPayment";
+import PrivateRoute from "../../Component/PrivateRoute/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -54,6 +55,7 @@ export const router = createBrowserRouter([
         path: "vegitableShop",
         element: <VegitableShop />
       },
+     
       {
         path: "freshFruit",
         element: <FreshFruit />

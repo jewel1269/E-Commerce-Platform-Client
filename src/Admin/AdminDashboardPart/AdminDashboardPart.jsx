@@ -19,24 +19,24 @@ const data = {
 
 const AdminDashboardPart = () => {
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
+    <div className="lg:p-8 bg-gray-100 min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white lg:p-6 rounded-lg shadow">
           <h2 className="text-gray-500 text-lg font-semibold mb-2">Customers</h2>
           <p className="text-3xl font-bold">45,679</p>
           <p className="text-green-500">Increase by 20%</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white lg:p-6 rounded-lg shadow">
           <h2 className="text-gray-500 text-lg font-semibold mb-2">Orders</h2>
           <p className="text-3xl font-bold">80,927</p>
           <p className="text-green-500">Increase by 60%</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white lg:p-6 rounded-lg shadow">
           <h2 className="text-gray-500 text-lg font-semibold mb-2">Delivery</h2>
           <p className="text-3xl font-bold">22,339</p>
           <p className="text-red-500">Decrease by 2%</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white lg:p-6 rounded-lg shadow">
           <h2 className="text-gray-500 text-lg font-semibold mb-2">Users</h2>
           <p className="text-3xl font-bold">+1,900</p>
           <p className="text-gray-500">Steady growth</p>
@@ -44,19 +44,19 @@ const AdminDashboardPart = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white lg:p-6 rounded-lg shadow">
           <h2 className="text-gray-500 text-lg font-semibold mb-2">Product Categories</h2>
           <div className="lg:h-96 lg:w-96">
             <CustomPieChart />
           </div>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white lg:p-6 rounded-lg shadow">
           <h2 className="text-gray-500 text-lg font-semibold mb-2">Product Visits</h2>
           <CustomLineChart data={data} />
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow mb-6">
+      <div className="bg-white lg:p-6 rounded-lg shadow mb-6">
         <h2 className="text-gray-500 text-lg font-semibold mb-2">Revenue</h2>
         <p className="text-3xl font-bold">36,568</p>
         <div className="flex space-x-4">

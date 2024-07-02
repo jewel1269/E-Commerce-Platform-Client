@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
+import loadingImg from "/Animation - 1719949818611.gif";
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const DiscountCard = ({ discount }) => {
   return (
@@ -30,6 +32,7 @@ const DiscountCard = ({ discount }) => {
 
 const DontMiss = () => {
   const [discounts, setDiscounts] = useState([]);
+  const { loading } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchMenus = async () => {
@@ -43,17 +46,38 @@ const DontMiss = () => {
     };
 
     fetchMenus();
-  }, []); // Empty dependency array ensures the effect runs only once on component mount
+  }, []); 
+
+  if (loading) {
+    return (
+      <div className='flex lg:ml-32 items-center justify-center'>
+        <img className='lg:h-36 lg:w-44' src={loadingImg} alt="Loading" />
+      </div>
+    )
+  }
 
   return (
-    <div className="bg-green-100 p-6">
+    <div className="bg-green-100 lg:p-6">
       <div className="text-2xl font-semibold mb-6">Don't Miss our Discounts</div>
       <Swiper
-        slidesPerView={4}
-        autoplay={true}
+        slidesPerView={1}
         spaceBetween={2}
         pagination={{
           clickable: true,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
         }}
         modules={[Pagination]}
       >

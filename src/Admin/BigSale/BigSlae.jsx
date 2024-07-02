@@ -23,7 +23,7 @@ const BigSlae = () => {
     return (
         <div>
             {productDatas.map(productData => (
-                <div key={productData._id} className="container mx-auto p-4">
+                <div key={productData._id} className="container mx-auto lg:p-4">
                     <table className="table-auto w-full border-collapse border border-gray-200">
                         <thead>
                             <tr>

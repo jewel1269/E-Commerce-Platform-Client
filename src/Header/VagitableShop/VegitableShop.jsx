@@ -1,10 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsArrow90DegLeft } from "react-icons/bs";
 import MessengerCustomerChat from "react-messenger-customer-chat";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const ProductList = () => {
   const [vegitables, setVegitables] = useState([]);
+  const {user}=useContext(AuthContext)
   useEffect(() => {
     axios.get("http://localhost:5000/vegitables").then((res) => {
       console.log(res.data);

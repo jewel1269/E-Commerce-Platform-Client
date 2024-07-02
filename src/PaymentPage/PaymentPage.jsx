@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import axios from 'axios';
+import PrivateRoute from '../Component/PrivateRoute/PrivateRoute';
 
 const PaymentPage = () => {
   const { id } = useParams();
@@ -139,12 +140,23 @@ const PaymentPage = () => {
             <span>Total</span>
             <span>€{items?.price || items?.priceRange}</span>
           </div>
-          <button
+          {
+            user? <button
             onClick={handlePayment}
             className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700"
           >
             Continue to secure payment
           </button>
+          :
+         <PrivateRoute>
+           <button
+            
+            className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700"
+          >
+            Continue to secure payment
+          </button>
+         </PrivateRoute>
+          }
           <button className="w-full bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 mt-4">
             Cancel payment
           </button>

@@ -37,17 +37,17 @@ function Payment() {
   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-4 gap-4 mb-4">
-        <div className="bg-blue-500 text-white p-4 rounded">
+    <div className="lg:p-4 overflow-x-auto">
+      <div className="lg:grid lg:grid-cols-4 gap-4 mb-4">
+        <div className="bg-blue-500 mb-3 text-white p-4 rounded">
           <p className="text-lg">User Activity</p>
           <p className="text-xl">Users logins: 103</p>
         </div>
-        <div className="bg-yellow-500 text-white p-4 rounded">
+        <div className="bg-yellow-500 mb-3 text-white p-4 rounded">
           <p className="text-lg">Open Tickets</p>
           <p className="text-xl">Issues this week: 11</p>
         </div>
-        <div className="bg-pink-500 text-white p-4 rounded">
+        <div className="bg-pink-500 mb-3 text-white p-4 rounded">
           <p className="text-lg">Purchases</p>
           <p className="text-xl">Today: 26</p>
           <p className="text-lg">Total: ${totalPurchases.toFixed(2)}</p>

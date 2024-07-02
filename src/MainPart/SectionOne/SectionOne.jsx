@@ -5,12 +5,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { FaRegEye } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import loadingImg from "/Animation - 1719949818611.gif"
+import PrivateRoute from '../../Component/PrivateRoute/PrivateRoute';
+
 
 
 
 const ProductCard = ({menus}) => {
 
-  const {user}=useContext(AuthContext)
+  const {user, loading}=useContext(AuthContext)
   const email = user?.email
   
   
@@ -32,6 +35,14 @@ const ProductCard = ({menus}) => {
      
     }
   };
+  if (loading) {
+    return (
+      <div className='flex lg:ml-96 items-center justify-center'>
+        <img className='lg:h-36 lg:w-44' src={loadingImg}></img>
+      </div>
+    )
+  }
+
 
   return (
     <div className='grid lg:grid-cols-3 grid-cols-1 gap-8 p-5'>
@@ -87,12 +98,21 @@ const ProductCard = ({menus}) => {
             </div>
           ) : (
             <div className="flex items-center justify-center gap-3">
-              <button
+             {
+              user?  <button
               className="bg-green-600 hover:bg-orange-500 text-white rounded-full px-4 py-2 text-xs"
               onClick={() => addToCartHandler(menu)} 
             >
               Add to Cart
+            </button> :
+            <NavLink to={'/login'}>
+               <button
+              className="bg-green-600 hover:bg-orange-500 text-white rounded-full px-4 py-2 text-xs"
+            >
+              Add to Cart
             </button>
+            </NavLink>
+             }
             <NavLink to={`/details/${menu._id}`}>
             <button data-tip="Details" className='tooltip rounded-full p-2 border border-gray-300 hover:bg-orange-500'>
             <FaRegEye />
