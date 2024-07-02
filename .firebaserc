@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "my-portfolio-e938f"
-  }
+    "default": "tasty-daily-94418",
+    "tasty-daily": "tasty-daily-94418",
+    "tasty-daily-ecommerce": "tasty-daily-ecommerce"
+  },
+  "targets": {},
+  "etags": {}
 }

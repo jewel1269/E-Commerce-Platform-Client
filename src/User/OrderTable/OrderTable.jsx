@@ -168,10 +168,10 @@ axios.post('http://localhost:5000/create-payment', {
                       <tr key={index} className="border-t">
                         <td className="py-2 px-4">{index + 1 + (currentPage - 1) * itemsPerPage}</td>
                         <td className="py-2 px-4">{order._id}</td>
-                        <td className="py-2 px-4">{order.orderProduct.menuCard?.title}</td>
+                        <td className="py-2 px-4">{order.orderProduct.menuCard?.title || order.orderProduct.menuCard?.name}</td>
                         
                         <td className="py-2 px-4">{order.Date}</td>
-                        <td className="py-2 px-4">{order.orderProduct.menuCard?.priceRange}</td>
+                        <td className="py-2 px-4">{order.orderProduct.menuCard?.priceRange || order.orderProduct.menuCard?.price}</td>
                         <td className="py-2 px-4">
                           <span className={`px-2 py-1 rounded-full text-xs ${order.status === 'Complete' ? 'bg-green-100 text-green-700' : order.status === 'Pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}`}>
                             {order.status}

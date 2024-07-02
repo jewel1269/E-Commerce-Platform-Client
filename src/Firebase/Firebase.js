@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCXWpLttZjxMdeA2wGIKoIVbnvMvYREz9U",
-  authDomain: "my-portfolio-e938f.firebaseapp.com",
-  projectId: "my-portfolio-e938f",
-  storageBucket: "my-portfolio-e938f.appspot.com",
-  messagingSenderId: "826591919618",
-  appId: "1:826591919618:web:5e330ba4b2e9610a2fb11b"
+  apiKey: "AIzaSyClQ1dR2aYQ9CdRMgFZh0yM-fSn7Lu-egU",
+  authDomain: "tasty-daily-ecommerce.firebaseapp.com",
+  projectId: "tasty-daily-ecommerce",
+  storageBucket: "tasty-daily-ecommerce.appspot.com",
+  messagingSenderId: "435602908470",
+  appId: "1:435602908470:web:c0eada91f81698f4e5bf97"
 };
 
 // Initialize Firebase
