@@ -43,7 +43,7 @@ const LastSwiper = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/specialItem");
+        const response = await axios.get("https://e-commerce-platform-server.vercel.app/specialItem");
         console.log(response.data);
         setProducts(response.data);
       } catch (error) {

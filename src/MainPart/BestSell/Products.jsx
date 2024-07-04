@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
   const addToCartHandler = async (menuCard) => {
     console.log(menuCard);
     try {
-      const response = await axios.post(`http://localhost:5000/addToCart`, {
+      const response = await axios.post(`https://e-commerce-platform-server.vercel.app/addToCart`, {
         email,
         menuCard
       });
@@ -116,7 +116,7 @@ const Products = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/bestSellers");
+        const response = await axios.get("https://e-commerce-platform-server.vercel.app/bestSellers");
         console.log(response.data);
         setProducts(response.data);
       } catch (error) {

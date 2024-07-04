@@ -22,7 +22,7 @@ const OrderTable = () => {
     const fetchCartProducts = async () => {
       if (user?.email) {
         try {
-          const res = await axios.get(`http://localhost:5000/order/${user.email}`);
+          const res = await axios.get(`https://e-commerce-platform-server.vercel.app/order/${user.email}`);
           // console.log(res.data);
           setOrders(res.data);
         } catch (err) {
@@ -81,7 +81,7 @@ const OrderTable = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5000/orderDelete/${id}`;
+        const url = `https://e-commerce-platform-server.vercel.app/orderDelete/${id}`;
         axios.delete(url)
           .then((response) => {
             Swal.fire({
@@ -105,11 +105,25 @@ const OrderTable = () => {
     });
 };
 
+const handleConfirm = (id) => {
+  axios.patch(`https://e-commerce-platform-server.vercel.app/paidOrder/${id}`, {
+    status: "Paid"
+  })
+  .then(res => {
+    console.log(res);
+  })
+  .catch(error => {
+    console.error('Error updating order status:', error);
+  });
+};
 
-const hanldeCreatePayment =()=>{
-axios.post('http://localhost:5000/create-payment', {
-  amount: 1000,
-  currency: 'USD'
+const hanldeCreatePayment =(orderDetails)=>{
+  const id = orderDetails?._id;
+  handleConfirm(id)
+  console.log(id);
+axios.post('https://e-commerce-platform-server.vercel.app/create-payment', {
+  orderDetails, user
+
 })
 .then(res=>{
   console.log(res);
@@ -173,12 +187,15 @@ axios.post('http://localhost:5000/create-payment', {
                         <td className="py-2 px-4">{order.Date}</td>
                         <td className="py-2 px-4">{order.orderProduct.menuCard?.priceRange || order.orderProduct.menuCard?.price}</td>
                         <td className="py-2 px-4">
-                          <span className={`px-2 py-1 rounded-full text-xs ${order.status === 'Complete' ? 'bg-green-100 text-green-700' : order.status === 'Pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}`}>
+                          <span className={`px-4 py-2 rounded-full text-xs ${order.status === 'Paid' ? 'bg-green-100 text-green-700' : order.status === 'Pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}`}>
                             {order.status}
                           </span>
                         </td>
                         <td className="py-2 px-4 border-b">
-                  <button onClick={hanldeCreatePayment} className="hover:bg-green-600 hover:text-black text-black border border-gray-400 px-2 py-1 rounded mr-2">Payment</button>
+                  {order?.status !== "Paid" ?
+                  <button onClick={()=>hanldeCreatePayment(order)} className="hover:bg-green-600 hover:text-black text-black border border-gray-400 px-2 py-1 rounded mr-2">Payment</button>
+                :
+                ""}
                   <button onClick={()=>handleDelete(order._id)} className="hover:bg-red-600 hover:text-white px-2 text-black border border-gray-400px-2 py-1 rounded">Delete</button>
                 </td>
                       </tr>

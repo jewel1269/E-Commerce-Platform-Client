@@ -16,7 +16,7 @@ const Nabvar = () => {
     const fetchCartProducts = async () => {
       if (user?.email) {
         try {
-          const res = await axios.get(`http://localhost:5000/myCart/${user.email}`);
+          const res = await axios.get(`https://e-commerce-platform-server.vercel.app/myCart/${user.email}`);
           setProducts(res.data);
         } catch (err) {
           console.error("Error fetching user cart:", err);
@@ -30,7 +30,7 @@ const Nabvar = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/userInfo/${user?.email}`)
+        .get(`https://e-commerce-platform-server.vercel.app/userInfo/${user?.email}`)
         .then((res) => {
           setAbout(res.data);
         })

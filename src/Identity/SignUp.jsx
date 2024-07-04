@@ -67,7 +67,7 @@ const SignUp = () => {
       await createUser(email, password);
       alert("Successfully registered");
 
-      const response = await axios.post("http://localhost:5000/users", formData);
+      const response = await axios.post("https://e-commerce-platform-server.vercel.app/users", formData);
       console.log(response.data);
 
       if (response.data) {

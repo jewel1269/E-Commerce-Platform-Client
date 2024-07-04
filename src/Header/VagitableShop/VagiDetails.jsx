@@ -5,11 +5,10 @@ import { FaLeftLong } from 'react-icons/fa6';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 
-const FruitsDetails = () => {
+const VagiDetails = () => {
     const { id } = useParams();
     const [menus, setMenus] = useState([]);
     const [quantity, setQuantity] = useState(1);
-
     const {user}= useContext(AuthContext)
 
     const addToCartHandler = async (menuCard) => {
@@ -30,7 +29,7 @@ const FruitsDetails = () => {
     useEffect(() => {
         const fetchMenus = async () => {
             try {
-                const response = await axios.get("https://e-commerce-platform-server.vercel.app/freshFruit");
+                const response = await axios.get("https://e-commerce-platform-server.vercel.app/vegitables");
                 setMenus(response.data);
             } catch (error) {
                 console.error("Error fetching menus:", error);
@@ -69,7 +68,7 @@ const FruitsDetails = () => {
                         <span className="text-gray-600 ml-2">(4.3)</span>
                     </div>
                     <p className="text-gray-600 mt-4">
-                        {items?.descriptions}
+                        {items?.descriptions || items?.description}
                     </p>
                     <div className="flex items-center mt-4">
                         <span className="text-gray-700 mr-2">QUANTITY:</span>
@@ -91,4 +90,6 @@ const FruitsDetails = () => {
     );
 };
 
-export default FruitsDetails;
+export default VagiDetails;
+
+

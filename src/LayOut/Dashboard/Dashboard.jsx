@@ -16,7 +16,7 @@ const Dashboard = () => {
     const fetchCartProducts = async () => {
       if (user?.email) {
         try {
-          const res = await axios.get(`http://localhost:5000/myCart/${user.email}`);
+          const res = await axios.get(`https://e-commerce-platform-server.vercel.app/myCart/${user.email}`);
           setProducts(res.data);
         } catch (err) {
           console.error("Error fetching user cart:", err);
@@ -30,7 +30,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/userInfo/${user?.email}`)
+        .get(`https://e-commerce-platform-server.vercel.app/userInfo/${user?.email}`)
         .then((res) => {
           setAbout(res.data);
         })
@@ -48,10 +48,10 @@ const Dashboard = () => {
     <div className="flex flex-col h-screen">
       <Nabvar />
       <div className="flex flex-col md:flex-row flex-1">
-        <aside className={`flex flex-col w-full md:w-64 lg:w-80 h-full px-4 overflow-y-auto bg-gray-50 border-r dark:bg-gray-900 dark:border-gray-700 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 ease-in-out`}>
-          <h1 className='text-2xl text-center font-semibold'>Welcome Mr. {about?.username}!</h1>
+        <aside className={`fixed md:static flex flex-col w-full md:w-64 lg:w-80 h-full text-black px-4 overflow-y-auto lg:bg-gray-50 bg-purple-50 lg:opacity-100 bg-opacity-80 border-r dark:bg-gray-900 dark:border-gray-700 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 ease-in-out`}>
+          <h1 className='text-2xl text-center font-semibold mt-4'>Welcome Mr. {about?.username}!</h1>
           <div className="relative mt-6">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+            <span className="absolute inset-y-0 left-0  flex items-center pl-3">
               <FaSearch className="w-5 h-5 text-gray-400" />
             </span>
             <input
@@ -141,7 +141,27 @@ const Dashboard = () => {
 
                 <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="payment">
                   <FaTicketAlt className="w-5 h-5" />
-                  <span className="mx-4 font-medium">Payment History</span>
+                  <span className="mx-4 font-medium">Payment</span>
+                </Link>
+
+                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="BigSale">
+                  <FaTicketAlt className="w-5 h-5" />
+                  <span className="mx-4 font-medium">Big Sales</span>
+                </Link>
+
+                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="NotMiss">
+                  <FaTicketAlt className="w-5 h-5" />
+                  <span className="mx-4 font-medium">Don't Miss</span>
+                </Link>
+
+                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="Discount">
+                  <FaTicketAlt className="w-5 h-5" />
+                  <span className="mx-4 font-medium">Discount</span>
+                </Link>
+
+                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="payment">
+                  <FaTicketAlt className="w-5 h-5" />
+                  <span className="mx-4 font-medium">Reviews</span>
                 </Link>
 
                 <hr className="my-6 border-gray-200 dark:border-gray-600" />
@@ -155,9 +175,9 @@ const Dashboard = () => {
           )}
         </aside>
 
-        <main className="flex-1 p-6">
+        <main className="flex-1 mt-12  p-6">
           <button className="md:hidden p-2" onClick={toggleSidebar} style={{ position: 'absolute', top: '1rem', left: '1rem' }}>
-            <FaBars className="text-2xl" />
+            <FaBars className="text-2xl h-16 mt-28" />
           </button>
           <Outlet />
           <MessengerChat />

@@ -27,6 +27,7 @@ import PaymentPage from "../../PaymentPage/PaymentPage";
 import FruitsDetails from "../../Header/FreshFruit/FruitsDetails";
 import SuccessPayment from "../../PaymentInformation/PaymentSuccess/SuccessPayment";
 import PrivateRoute from "../../Component/PrivateRoute/PrivateRoute";
+import VagiDetails from "../../Header/VagitableShop/VagiDetails";
 
 
 export const router = createBrowserRouter([
@@ -81,9 +82,10 @@ export const router = createBrowserRouter([
         element: <FruitsDetails />
       },
       {
-        path: "/SuccessPayment",
-        element: <SuccessPayment />
+        path: "/VagiDetails/:id",
+        element: <VagiDetails />
       },
+      
     ]
   },
   {

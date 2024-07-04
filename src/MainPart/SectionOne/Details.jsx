@@ -13,7 +13,7 @@ const Details = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/allMenus");
+        const response = await axios.get("https://e-commerce-platform-server.vercel.app/allMenus");
         setMenus(response.data);
       } catch (error) {
         console.error("Error fetching menus:", error);
@@ -31,7 +31,7 @@ const Details = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/userInfo/${user?.email}`)
+        .get(`https://e-commerce-platform-server.vercel.app/userInfo/${user?.email}`)
         .then((res) => {
           console.log(res.data);
           setAbout(res.data);
@@ -43,6 +43,8 @@ const Details = () => {
   }, [user?.email]);
 
   console.log(about);
+
+  
 
   return (
     <div className="flex justify-center items-center min-h-screen border border-gray-500 p-5 ">
@@ -97,11 +99,14 @@ const Details = () => {
              {items?.outOfStock ?  <button className="bg-gray-500 cursor-not-allowed btn-sm text-white w-full py-2 rounded-lg flex justify-center items-center">
                Out Of Stock
               </button> :
-              <NavLink to={`/PaymentPage/${items?._id}`}>
-                 <button className="bg-green-500 btn-sm hover:bg-orange-500 text-white w-full py-2 rounded-lg flex justify-center items-center">
-               Buy Now
-             </button>
-              </NavLink>
+             
+             <button
+             
+             className="bg-green-500 hover:bg-orange-500 text-white w-full py-2 rounded-lg flex justify-center items-center"
+           >
+             Pay Now
+           </button>
+              
              }
             </div>
           </div>

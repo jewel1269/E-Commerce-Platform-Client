@@ -3,16 +3,39 @@ import React, { useContext, useEffect, useState } from "react";
 import { BsArrow90DegLeft } from "react-icons/bs";
 import MessengerCustomerChat from "react-messenger-customer-chat";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ProductList = () => {
   const [vegitables, setVegitables] = useState([]);
   const {user}=useContext(AuthContext)
+     
+
+      const addToCartHandler = async (menuCard) => {
+        console.log(menuCard);
+        try {
+          const response = await axios.post("https://e-commerce-platform-server.vercel.app/addToCart", {
+            email: user?.email,
+            menuCard,
+          });
+          console.log('Added to cart:', response.data);
+          toast.success("Product added successfully");
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+          toast.error("Product not added");
+        }
+      };
+
   useEffect(() => {
-    axios.get("http://localhost:5000/vegitables").then((res) => {
+    axios.get("https://e-commerce-platform-server.vercel.app/vegitables").then((res) => {
       console.log(res.data);
       setVegitables(res.data);
     });
   }, []);
+
+
+ 
+
   console.log(vegitables);
   return (
     <div className="mb-5">
@@ -134,11 +157,13 @@ const ProductList = () => {
             {vegitables.map((vegitable, index) => (
               <div key={index} className="border lg:w-96 p-4 hover:bg-slate-200 hover:cursor-zoom-in hover:shadow-2xl hover:border hover:border-gray-300 rounded bg-white">
                 <div className="relative">
-                  <img
+                 <NavLink to={`/VagiDetails/${vegitable._id}`}>
+                 <img
                     src={vegitable?.imageUrl}
                     alt={vegitable.name}
                     className="w-full h-56 rounded-lg object-cover"
                   />
+                 </NavLink>
                   <span className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded">
                     {vegitable?.discount}
                   </span>
@@ -167,14 +192,32 @@ const ProductList = () => {
                   </select>
                   
                 </div>
-                {vegitable?.outOfStock === true ? (
-                  <button className="mt-4 w-full px-4 py-2 bg-gray-500 cursor-not-allowed text-white rounded">
+                {vegitable?.outOfStock ? (
+                  <button className="mt-4 w-full px-4  bg-gray-500 cursor-not-allowed text-white rounded">
                     Out Of Stock
                   </button>
                 ) : (
-                  <button className="mt-4 w-full px-4 py-2 bg-green-500 hover:bg-orange-400 text-white rounded">
-                    Add to Cart
-                  </button>
+                  user ? (
+                    <button
+                      onClick={() => addToCartHandler(vegitable)}
+                      className="mt-4 w-full px-4  bg-green-500 hover:bg-orange-400 text-white rounded"
+                    >
+                      Add to Cart
+                    </button>
+                  ) : (
+                    
+                      <div>
+                        <NavLink to={'/login'}>
+                        <button
+                        
+                        className="mt-4 w-full px-4  bg-green-500 hover:bg-orange-400 text-white rounded"
+                      >
+                        Add to Cart
+                      </button>
+                        </NavLink>
+                      </div>
+                   
+                  )
                 )}
               </div>
             ))}

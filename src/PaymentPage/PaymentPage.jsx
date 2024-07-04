@@ -14,7 +14,7 @@ const PaymentPage = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/allMenus");
+        const response = await axios.get("https://e-commerce-platform-server.vercel.app/allMenus");
         setMenus(response.data);
       } catch (error) {
         console.error("Error fetching menus:", error);
@@ -65,7 +65,7 @@ const PaymentPage = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/userInfo/${user?.email}`)
+        .get(`https://e-commerce-platform-server.vercel.app/userInfo/${user?.email}`)
         .then((res) => {
           console.log(res.data);
           setAbout(res.data);

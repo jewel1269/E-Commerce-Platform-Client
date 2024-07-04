@@ -13,6 +13,7 @@ const Main = () => {
             <Outlet/>
             <Footer/>
             <MessengerChat/>
+            <ToastContainer/>
         </div>
     );
 };

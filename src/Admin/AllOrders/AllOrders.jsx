@@ -9,7 +9,7 @@ const AllOrders = () => {
   const [products, setProducts]= useState([])
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/allOrders')
+    axios.get('https://e-commerce-platform-server.vercel.app/allOrders')
     .then(res=>{
       console.log(res.data);
       setProducts(res.data)

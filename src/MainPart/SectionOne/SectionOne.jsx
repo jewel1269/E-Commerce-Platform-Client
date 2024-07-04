@@ -20,7 +20,7 @@ const ProductCard = ({menus}) => {
   const addToCartHandler = async (menuCard) => {
     console.log(menuCard);
     try {
-      const response = await axios.post(`http://localhost:5000/addToCart`, {
+      const response = await axios.post(`https://e-commerce-platform-server.vercel.app/addToCart`, {
         email,
         menuCard
       });
@@ -139,7 +139,7 @@ const SectionOne = () => {
     useEffect(() => {
       const fetchMenus = async () => {
         try {
-          const response = await axios.get("http://localhost:5000/allMenus");
+          const response = await axios.get("https://e-commerce-platform-server.vercel.app/allMenus");
           console.log(response.data);
           setMenus(response.data);
         } catch (error) {
@@ -223,7 +223,7 @@ const SectionOne = () => {
 
           </div>
         </div>
-        <div className=" items-center lg:ml-16  mb-6">
+        <div className=" items-center lg:ml-16 ml-12  mb-6">
           <div className="bg-white p-4 rounded-lg shadow-md text-center w-96">
             <h3 className="text-lg font-bold text-gray-800">We Deliver on Next Day from</h3>
             <p className="text-green-600 text-xl font-bold">10:00 AM to 08:00 PM</p>

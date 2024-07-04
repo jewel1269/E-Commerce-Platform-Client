@@ -37,7 +37,7 @@ const DontMiss = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/notMiss");
+        const response = await axios.get("https://e-commerce-platform-server.vercel.app/notMiss");
         console.log(response.data);
         setDiscounts(response.data);
       } catch (error) {

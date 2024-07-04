@@ -8,7 +8,7 @@ const AllUser = () => {
   useEffect(() => {
     
       axios
-        .get(`http://localhost:5000/allUser`)
+        .get(`https://e-commerce-platform-server.vercel.app/allUser`)
         .then((res) => {
           console.log(res.data);
           setAllUsers(res.data);

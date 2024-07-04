@@ -23,7 +23,7 @@ const Login = () => {
         .then(res=>{
             console.log(res.user);
         })
-        navigate(location.state)
+        navigate(location.state || '/')
 
 
         // try {
@@ -38,7 +38,7 @@ const Login = () => {
         googleLogin(provider)
         .then(res=>{
             console.log(res.user);
-            navigate(location.state)
+            navigate(location.state || '/')
         })
     }
 

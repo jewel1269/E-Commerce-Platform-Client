@@ -7,7 +7,7 @@ const BigSlae = () => {
     useEffect(() => {
         const fetchMenus = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/allMenus");
+                const response = await axios.get("https://e-commerce-platform-server.vercel.app/allMenus");
                 console.log(response.data);
                 setProductDatas(response.data);
             } catch (error) {

@@ -14,7 +14,7 @@ const FreshFruit = () => {
   useEffect(() => {
     const fetchFreshFruit = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/freshFruit");
+        const response = await axios.get("https://e-commerce-platform-server.vercel.app/freshFruit");
         console.log(response.data);
         setFreshFruit(response.data);
       } catch (error) {
@@ -28,7 +28,7 @@ const FreshFruit = () => {
   const addToCartHandler = async (menuCard) => {
     console.log(menuCard);
     try {
-      const response = await axios.post("http://localhost:5000/addToCart", {
+      const response = await axios.post("https://e-commerce-platform-server.vercel.app/addToCart", {
         email,
         menuCard,
       });
