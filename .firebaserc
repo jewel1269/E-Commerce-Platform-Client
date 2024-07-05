@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "tasty-daily-94418",
+    "default": "tasty-daily-ecommerce",
     "tasty-daily": "tasty-daily-94418",
     "tasty-daily-ecommerce": "tasty-daily-ecommerce"
   },

@@ -79,7 +79,7 @@ const Dashboard = () => {
                   <span className="mx-4 font-medium">All Payment</span>
                 </Link>
 
-                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="BigSale">
+                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="BigSlae">
                   <FaTicketAlt className="w-5 h-5" />
                   <span className="mx-4 font-medium">Big Sales</span>
                 </Link>
@@ -144,25 +144,7 @@ const Dashboard = () => {
                   <span className="mx-4 font-medium">Payment</span>
                 </Link>
 
-                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="BigSale">
-                  <FaTicketAlt className="w-5 h-5" />
-                  <span className="mx-4 font-medium">Big Sales</span>
-                </Link>
-
-                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="NotMiss">
-                  <FaTicketAlt className="w-5 h-5" />
-                  <span className="mx-4 font-medium">Don't Miss</span>
-                </Link>
-
-                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="Discount">
-                  <FaTicketAlt className="w-5 h-5" />
-                  <span className="mx-4 font-medium">Discount</span>
-                </Link>
-
-                <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" to="payment">
-                  <FaTicketAlt className="w-5 h-5" />
-                  <span className="mx-4 font-medium">Reviews</span>
-                </Link>
+               
 
                 <hr className="my-6 border-gray-200 dark:border-gray-600" />
 
