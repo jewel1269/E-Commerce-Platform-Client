@@ -3,7 +3,7 @@ import React from 'react';
 const DiccountPart = () => {
     return (
         <div>
-            <div className="bg-green-100 p-6">
+            <div className="bg-green-100 lg:p-6 p-3">
       <div className="bg-green-200 text-center py-2">
         <span className="font-semibold">30% Discount for Your First Purchase!</span>
         <span className="ml-2 bg-white text-green-600 font-bold px-2 py-1 rounded">TD555777</span>
@@ -20,7 +20,7 @@ const DiccountPart = () => {
         </div>
         <div className="bg-white p-4 flex items-center justify-center  from-rose-200 via-fuchsia-300 to-indigo-200 bg-gradient-to-r rounded shadow text-center">
           <div className="font-semibold text-2xl">Tasty <span className="text-green-600">Chocolate</span> <br /> from Switzerland</div>
-          <img src="https://www.spruengli.ch/images/shop/selection-de-pralines-truffes.jpg" alt="Chocolate" className="mx-auto rounded-full h-56 mb-4" />
+          <img src="https://www.spruengli.ch/images/shop/selection-de-pralines-truffes.jpg" alt="Chocolate" className="w-32 lg:mx-auto rounded-full h-48 mb-4" />
         </div>
       </div>
     </div>

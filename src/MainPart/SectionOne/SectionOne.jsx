@@ -223,8 +223,8 @@ const SectionOne = () => {
 
           </div>
         </div>
-        <div className=" items-center lg:ml-16 ml-12  mb-6">
-          <div className="bg-white p-4 rounded-lg shadow-md text-center w-96">
+        <div className=" items-center lg:ml-16  mb-6">
+          <div className="bg-white  rounded-lg shadow-md text-center w-80">
             <h3 className="text-lg font-bold text-gray-800">We Deliver on Next Day from</h3>
             <p className="text-green-600 text-xl font-bold">10:00 AM to 08:00 PM</p>
             <img className='lg:h-96 lg:w-[450px]' src="https://www.shutterstock.com/image-photo/smiling-asian-delivery-man-orange-260nw-1689889483.jpg" alt="" />

@@ -100,12 +100,14 @@ const Details = () => {
                Out Of Stock
               </button> :
              
-             <button
+            <NavLink to={`/PaymentPage/${items?._id}`}>
+               <button
              
              className="bg-green-500 hover:bg-orange-500 text-white w-full py-2 rounded-lg flex justify-center items-center"
            >
              Pay Now
            </button>
+            </NavLink>
               
              }
             </div>

@@ -83,8 +83,8 @@ const AllPayment = () => {
             </TabList>
             {[ 'All', 'Complete', 'Complete', 'Complete'].map((status, index) => (
               <TabPanel key={index}>
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex space-x-2 items-center">
+                <div className="lg:flex justify-between items-center mb-4">
+                  <div className="lg:flex space-x-2 items-center">
                     <label className="mr-2">Start Date:</label>
                     <input
                       type="date"

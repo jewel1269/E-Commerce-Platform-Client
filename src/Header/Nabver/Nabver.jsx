@@ -76,11 +76,11 @@ const Nabvar = () => {
       <div className="bg-white  text-green-900 border-b">
         <div className=" mx-auto flex justify-between items-center py-4 px-4">
           <a href="/" className="flex items-center space-x-2">
-            <div className="text-3xl font-bold text-green-500">Tasty</div>
-            <a href="#" className="hover:text-green-700 flex items-center space-x-1">
-              <PiBowlFoodBold className='w-8 h-8 mt-2' />
+            <div className="lg:text-3xl text-xl font-bold text-green-500">Tasty</div>
+            <a href="#" className="hover:text-green-700 lg:block hidden flex items-center space-x-1">
+              <PiBowlFoodBold className='lg:w-8 lg:h-8 w-6 h-6 mt-2' />
             </a>
-            <div className="text-3xl font-bold">Daily</div>
+            <div className="lg:text-3xl text-xl font-bold">Daily</div>
           </a>
           <div className="hidden lg:flex text-xl space-x-8">
             <a href="/" className="hover:text-green-700 flex items-center space-x-1">
