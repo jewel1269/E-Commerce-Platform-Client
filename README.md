@@ -6,9 +6,10 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
 # Tasty Daily E-Commerce Platform
 
-![Currently I am working In this projects that's way live link not available]
+[live link](https://tasty-daily-ecommerce.web.app/)
 
 Tasty Daily is an e-commerce platform designed to offer a wide variety of gourmet food items and ingredients for online purchase.
 
